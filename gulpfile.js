@@ -63,24 +63,27 @@ gulp.task('images', function () {
         .pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task('sass', function () {
-    return es.merge(
-        gulp.src(config.sassSrc)
-        .pipe(plumber({errorHandler: handleErrors}))
-        .pipe(expect(config.sassSrc))
-        .pipe(sass({includePaths:config.bower}).on('error', sass.logError))
-        .pipe(gulp.dest(config.cssDir)),
-        gulp.src(config.bower + '**/fonts/**/*.{woff,woff2,svg,ttf,eot,otf}')
-        .pipe(plumber({errorHandler: handleErrors}))
-        .pipe(changed(config.app + 'content/fonts'))
-        .pipe(flatten())
-        .pipe(gulp.dest(config.app + 'content/fonts'))
-    );
-});
+// gulp.task('sass', function () {
+//     return es.merge(
+//         gulp.src(config.sassSrc)
+//         .pipe(plumber({errorHandler: handleErrors}))
+//         .pipe(expect(config.sassSrc))
+//         .pipe(sass({includePaths:config.bower}).on('error', sass.logError))
+//         .pipe(gulp.dest(config.cssDir)),
+//         gulp.src(config.bower + '**/fonts/**/*.{woff,woff2,svg,ttf,eot,otf}')
+//         .pipe(plumber({errorHandler: handleErrors}))
+//         .pipe(changed(config.app + 'content/fonts'))
+//         .pipe(flatten())
+//         .pipe(gulp.dest(config.app + 'content/fonts'))
+//     );
+// });
+
+
+
 
 gulp.task('styles', ['sass'], function () {
     return gulp.src(config.app + 'content/css')
-        .pipe(browserSync.reload({stream: true}));
+        .pipe(browserSync.stream());
 });
 
 gulp.task('inject', function() {
@@ -187,4 +190,24 @@ gulp.task('build', ['clean'], function (cb) {
     runSequence(['copy', 'inject:vendor', 'ngconstant:prod', 'copy:languages'], 'inject:app', 'inject:troubleshoot', 'assets:prod', cb);
 });
 
-gulp.task('default', ['serve']);
+//gulp.task('default', ['serve']);
+
+gulp.task('sass', () => {
+    return gulp.src(config.sassSrc)
+        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+        .pipe(gulp.dest(config.cssDir))
+        .pipe(browserSync.stream())
+});
+
+gulp.task('servir', ['sass'], () => {
+    browserSync.init({
+    server: config.app
+});
+
+gulp.watch(config.sassSrc, ['sass']);
+gulp.watch(config.app + 'app/**/*.js', ['inject:app']);
+gulp.watch([config.app + '*.html', config.app + 'app/**', config.app + 'i18n/**']).on('change', browserSync.reload);
+
+});
+
+gulp.task('default', ['servir']);

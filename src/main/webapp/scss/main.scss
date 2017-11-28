@@ -1,7 +1,16 @@
+@import './partials/variables';
+@import './partials/navbar';
+
+
+@import './partials/footer';
+
+
+
 body {
-    background: #fafafa;
+    background: $main-bg;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    min-height: 100vh;
 }
 
 /* ==========================================================================

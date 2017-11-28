@@ -1,0 +1,39 @@
+// estilos barra de navegación
+
+.mynav .dropdown-menu li > a:not(.open) {
+    background-color: rgba(144,12,63,0.8) !important;
+    transition: all ease-in 0.2s;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: 0;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #900C3F;
+}
+.dropdown-menu {
+    padding: 0;
+}
+
+.mynav .open > a {
+    background-color: rgba(144,12,63,0.5) !important
+}
+
+.mynav .dropdown-menu li > a:hover {
+    background-color: #60082A !important;
+}
+mynav .dropdown-menu li > a:hover {
+    background-color: #60082A !important;
+}
+.mynav {
+    background-color: rgba(0, 0, 0, 1);
+    border: 0;
+}
+.mynav .dropdown-menu {
+    background-color: rgba(144,12,63,0.8);
+}
+.mynav li.active a {
+    background-color: rgba(144,12,63,0.8) !important;
+}
+.mynav a {
+    color: #fff !important;
+}
