@@ -1,0 +1,122 @@
+entity Banda{
+nombre String,
+localizacion String,
+datacreacion LocalDate,
+anosactivo LocalDate,
+temas String,
+discografica String,
+foto ImageBlob,
+logo ImageBlob,
+pais String,
+estado String,
+genero String,
+pais String,
+estado String,
+biografia String
+}
+
+
+entity Discografica{
+nombre String
+}
+
+entity Componente{
+nombre String,
+edad Integer,
+sexo String,
+funcionGrupo String,
+foto ImageBlob,
+fechaEntrada LocalDate,
+fechaSalida LocalDate
+}
+
+entity PuntuacionBanda{
+valoracion Integer,
+fechaPuntuacion ZonedDateTime,
+}
+entity PuntuacionAlbum{
+valoracion Integer,
+fechaPuntuacion ZonedDateTime,
+}
+
+entity PuntuacionCancion{
+valoracion Integer,
+fechaPuntuacion ZonedDateTime,
+}
+
+entity Album{
+genero String,
+nombre String,
+numCanciones Integer,
+formato String,
+numCopias Integer,
+reviews String
+}
+
+entity Cancion{
+nombre String,
+duracion Double,
+letra String
+}
+
+entity UserExt{
+foto ImageBlob,
+latitud Double,
+longitud Double,
+localidad String
+
+}
+
+entity ComentarCancion{
+comentario String,
+fechaComentario ZonedDateTime
+}
+
+entity ComentarAlbum{
+comentario String,
+fechaComentario ZonedDateTime
+}
+
+entity ComentarBanda{
+comentario String,
+fechaComentario ZonedDateTime
+}
+
+entity UserFollowingUser{
+since ZonedDateTime
+}
+
+relationship ManyToMany {
+Banda{discografica(nombre)} to Discografica{banda}
+}
+
+relationship ManyToOne {
+Componente{banda(nombre)} to Banda{componente},
+PuntuacionBanda{user(login)} to User,
+PuntuacionBanda{banda(nombre)} to Banda{puntuacione},
+PuntuacionAlbum{user(login)} to User,
+PuntuacionAlbum{album(nombre)} to Album{puntuacione},
+PuntuacionCancion{user(login)} to User,
+PuntuacionCancion{cancion(nombre)} to Cancion{puntuacione},
+ComentarCancion{user(login)} to User,
+ComentarCancion{cancion(nombre)} to Cancion{comentario},
+ComentarAlbum{user(login)} to User,
+ComentarAlbum{album(nombre)} to Album{comentario},
+ComentarBanda{user(login)} to User,
+ComentarBanda{banda(nombre)} to Banda{comentario},
+UserFollowingUser{usuarioOrigen(login)} to User,
+UserFollowingUser{usuarioDestino(login)} to User
+}
+
+relationship ManyToOne{
+Album{discografica(nombre)} to Discografica{album}
+}
+
+relationship ManyToOne{
+Cancion{album(nombre)} to Album{cancione}
+}
+
+relationship OneToOne{
+UserExt{user(login)} to User
+
+}

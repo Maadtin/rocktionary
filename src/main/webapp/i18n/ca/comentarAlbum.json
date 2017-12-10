@@ -1,0 +1,24 @@
+{
+    "rocktionaryApp": {
+        "comentarAlbum" : {
+            "home": {
+                "title": "Comentar Albums",
+                "createLabel": "Create a new Comentar Album",
+                "createOrEditLabel": "Create or edit a Comentar Album"
+            },
+            "created": "A new Comentar Album is created with identifier {{ param }}",
+            "updated": "A Comentar Album is updated with identifier {{ param }}",
+            "deleted": "A Comentar Album is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Comentar Album {{ id }}?"
+            },
+            "detail": {
+                "title": "Comentar Album"
+            },
+            "comentario": "Comentario",
+            "fechaComentario": "Fecha Comentario",
+            "user": "User",
+            "album": "Album"
+        }
+    }
+}

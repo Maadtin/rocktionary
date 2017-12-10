@@ -11,6 +11,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css content/css/vendor.css -->
     <!-- bower:css -->
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css">
     <!-- endinject -->
     <link rel="stylesheet" href="content/css/vendor.css">
@@ -27,7 +28,8 @@
     <![endif]-->
     <div ui-view="navbar" ng-cloak></div>
     <div class="container">
-        <div class="well" ui-view="content">
+
+        <div class="main-wrapper" ui-view="content">
             <!-- Angular views -->
         </div>
 
@@ -105,7 +107,85 @@
     <script src="app/layouts/error/error.state.js"></script>
     <script src="app/home/home.state.js"></script>
     <script src="app/home/home.controller.js"></script>
+    <script src="app/entities/user-following-user/user-following-user-dialog.controller.js"></script>
+    <script src="app/entities/user-following-user/user-following-user-detail.controller.js"></script>
+    <script src="app/entities/user-following-user/user-following-user-delete-dialog.controller.js"></script>
+    <script src="app/entities/user-following-user/user-following-user.state.js"></script>
+    <script src="app/entities/user-following-user/user-following-user.service.js"></script>
+    <script src="app/entities/user-following-user/user-following-user.controller.js"></script>
+    <script src="app/entities/user-ext/user-ext-dialog.controller.js"></script>
+    <script src="app/entities/user-ext/user-ext-detail.controller.js"></script>
+    <script src="app/entities/user-ext/user-ext-delete-dialog.controller.js"></script>
+    <script src="app/entities/user-ext/user-ext.state.js"></script>
+    <script src="app/entities/user-ext/user-ext.service.js"></script>
+    <script src="app/entities/user-ext/user-ext.controller.js"></script>
+    <script src="app/entities/puntuacion-cancion/puntuacion-cancion-dialog.controller.js"></script>
+    <script src="app/entities/puntuacion-cancion/puntuacion-cancion-detail.controller.js"></script>
+    <script src="app/entities/puntuacion-cancion/puntuacion-cancion-delete-dialog.controller.js"></script>
+    <script src="app/entities/puntuacion-cancion/puntuacion-cancion.state.js"></script>
+    <script src="app/entities/puntuacion-cancion/puntuacion-cancion.service.js"></script>
+    <script src="app/entities/puntuacion-cancion/puntuacion-cancion.controller.js"></script>
+    <script src="app/entities/puntuacion-banda/puntuacion-banda-dialog.controller.js"></script>
+    <script src="app/entities/puntuacion-banda/puntuacion-banda-detail.controller.js"></script>
+    <script src="app/entities/puntuacion-banda/puntuacion-banda-delete-dialog.controller.js"></script>
+    <script src="app/entities/puntuacion-banda/puntuacion-banda.state.js"></script>
+    <script src="app/entities/puntuacion-banda/puntuacion-banda.service.js"></script>
+    <script src="app/entities/puntuacion-banda/puntuacion-banda.controller.js"></script>
+    <script src="app/entities/puntuacion-album/puntuacion-album-dialog.controller.js"></script>
+    <script src="app/entities/puntuacion-album/puntuacion-album-detail.controller.js"></script>
+    <script src="app/entities/puntuacion-album/puntuacion-album-delete-dialog.controller.js"></script>
+    <script src="app/entities/puntuacion-album/puntuacion-album.state.js"></script>
+    <script src="app/entities/puntuacion-album/puntuacion-album.service.js"></script>
+    <script src="app/entities/puntuacion-album/puntuacion-album.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
+    <script src="app/entities/discografica/discografica-dialog.controller.js"></script>
+    <script src="app/entities/discografica/discografica-detail.controller.js"></script>
+    <script src="app/entities/discografica/discografica-delete-dialog.controller.js"></script>
+    <script src="app/entities/discografica/discografica.state.js"></script>
+    <script src="app/entities/discografica/discografica.service.js"></script>
+    <script src="app/entities/discografica/discografica.controller.js"></script>
+    <script src="app/entities/componente/componente-dialog.controller.js"></script>
+    <script src="app/entities/componente/componente-detail.controller.js"></script>
+    <script src="app/entities/componente/componente-delete-dialog.controller.js"></script>
+    <script src="app/entities/componente/componente.state.js"></script>
+    <script src="app/entities/componente/componente.service.js"></script>
+    <script src="app/entities/componente/componente.controller.js"></script>
+    <script src="app/entities/comentar-cancion/comentar-cancion-dialog.controller.js"></script>
+    <script src="app/entities/comentar-cancion/comentar-cancion-detail.controller.js"></script>
+    <script src="app/entities/comentar-cancion/comentar-cancion-delete-dialog.controller.js"></script>
+    <script src="app/entities/comentar-cancion/comentar-cancion.state.js"></script>
+    <script src="app/entities/comentar-cancion/comentar-cancion.service.js"></script>
+    <script src="app/entities/comentar-cancion/comentar-cancion.controller.js"></script>
+    <script src="app/entities/comentar-banda/comentar-banda-dialog.controller.js"></script>
+    <script src="app/entities/comentar-banda/comentar-banda-detail.controller.js"></script>
+    <script src="app/entities/comentar-banda/comentar-banda-delete-dialog.controller.js"></script>
+    <script src="app/entities/comentar-banda/comentar-banda.state.js"></script>
+    <script src="app/entities/comentar-banda/comentar-banda.service.js"></script>
+    <script src="app/entities/comentar-banda/comentar-banda.controller.js"></script>
+    <script src="app/entities/comentar-album/comentar-album-dialog.controller.js"></script>
+    <script src="app/entities/comentar-album/comentar-album-detail.controller.js"></script>
+    <script src="app/entities/comentar-album/comentar-album-delete-dialog.controller.js"></script>
+    <script src="app/entities/comentar-album/comentar-album.state.js"></script>
+    <script src="app/entities/comentar-album/comentar-album.service.js"></script>
+    <script src="app/entities/comentar-album/comentar-album.controller.js"></script>
+    <script src="app/entities/cancion/cancion-dialog.controller.js"></script>
+    <script src="app/entities/cancion/cancion-detail.controller.js"></script>
+    <script src="app/entities/cancion/cancion-delete-dialog.controller.js"></script>
+    <script src="app/entities/cancion/cancion.state.js"></script>
+    <script src="app/entities/cancion/cancion.service.js"></script>
+    <script src="app/entities/cancion/cancion.controller.js"></script>
+    <script src="app/entities/banda/banda-dialog.controller.js"></script>
+    <script src="app/entities/banda/banda-detail.controller.js"></script>
+    <script src="app/entities/banda/banda-delete-dialog.controller.js"></script>
+    <script src="app/entities/banda/banda.state.js"></script>
+    <script src="app/entities/banda/banda.service.js"></script>
+    <script src="app/entities/banda/banda.controller.js"></script>
+    <script src="app/entities/album/album-dialog.controller.js"></script>
+    <script src="app/entities/album/album-detail.controller.js"></script>
+    <script src="app/entities/album/album-delete-dialog.controller.js"></script>
+    <script src="app/entities/album/album.state.js"></script>
+    <script src="app/entities/album/album.service.js"></script>
+    <script src="app/entities/album/album.controller.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
     <script src="app/components/util/sort-by.directive.js"></script>

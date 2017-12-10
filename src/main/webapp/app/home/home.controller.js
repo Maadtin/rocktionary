@@ -8,7 +8,12 @@
     HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
 
     function HomeController ($scope, Principal, LoginService, $state) {
+
         var vm = this;
+
+        vm.handleOnInputChange = function () {
+            vm.showResults = !!vm.inputSearch;
+        };
 
         vm.account = null;
         vm.isAuthenticated = null;

@@ -1,0 +1,37 @@
+.home {
+
+    margin-top: 20px;
+
+    &__logo {
+        margin: 0 auto;
+    }
+
+    &__input-search {
+        border: $thin-border;
+        background-color: $primary;
+        color: #fff;
+        &::placeholder {
+            color: #fff;
+        }
+        &:focus {
+            border: $white-border !important;
+        }
+
+    }
+
+    &__search-results {
+        background-color: $secondary;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: all ease 0.2s;
+        &.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+
+}

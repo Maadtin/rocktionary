@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="rocktionaryApp.comentarCancion.detail.title">Comentar Cancion</span> {{vm.comentarCancion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="rocktionaryApp.comentarCancion.comentario">Comentario</span></dt>
+        <dd>
+            <span>{{vm.comentarCancion.comentario}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.comentarCancion.fechaComentario">Fecha Comentario</span></dt>
+        <dd>
+            <span>{{vm.comentarCancion.fechaComentario | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.comentarCancion.user">User</span></dt>
+        <dd>
+            {{vm.comentarCancion.user.login}}
+        </dd>
+        <dt><span data-translate="rocktionaryApp.comentarCancion.cancion">Cancion</span></dt>
+        <dd>
+            <a ui-sref="cancion-detail({id:vm.comentarCancion.cancion.id})">{{vm.comentarCancion.cancion.nombre}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="comentar-cancion-detail.edit({id:vm.comentarCancion.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

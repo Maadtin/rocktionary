@@ -1,0 +1,36 @@
+{
+    "rocktionaryApp": {
+        "banda" : {
+            "home": {
+                "title": "Bandas",
+                "createLabel": "Create a new Banda",
+                "createOrEditLabel": "Create or edit a Banda"
+            },
+            "created": "A new Banda is created with identifier {{ param }}",
+            "updated": "A Banda is updated with identifier {{ param }}",
+            "deleted": "A Banda is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Banda {{ id }}?"
+            },
+            "detail": {
+                "title": "Banda"
+            },
+            "nombre": "Nombre",
+            "localizacion": "Localizacion",
+            "datacreacion": "Datacreacion",
+            "anosactivo": "Anosactivo",
+            "temas": "Temas",
+            "discografica": "Discografica",
+            "foto": "Foto",
+            "logo": "Logo",
+            "pais": "Pais",
+            "estado": "Estado",
+            "genero": "Genero",
+            "biografia": "Biografia",
+            "discografica": "Discografica",
+            "componente": "Componente",
+            "puntuacione": "Puntuacione",
+            "comentario": "Comentario"
+        }
+    }
+}

@@ -1,5 +1,42 @@
 // estilos barra de navegación
 
+
+.menu {
+
+
+    &__link {
+        position: relative;
+        display: flex !important;
+        align-items: center;
+
+        i {
+            margin-left: 10px;
+        }
+
+
+    }
+
+    &__submenu {
+        visibility: hidden;
+        opacity: 0;
+        background-color: $secondary;
+        transition: all ease 0.2s;
+        li {
+            color: #fff;
+            padding: 1em;
+        }
+
+        &.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-10px);
+        }
+    }
+
+}
+
+
+
 .mynav .dropdown-menu li > a:not(.open) {
     background-color: rgba(144,12,63,0.8) !important;
     transition: all ease-in 0.2s;

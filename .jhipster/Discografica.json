@@ -1,0 +1,30 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "album",
+            "otherEntityName": "album",
+            "otherEntityRelationshipName": "discografica"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "banda",
+            "otherEntityName": "banda",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "discografica"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171210230414",
+    "entityTableName": "discografica",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

@@ -1,0 +1,142 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myBandaLabel" data-translate="rocktionaryApp.banda.home.createOrEditLabel">Create or edit a Banda</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.banda.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.banda.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.banda.nombre" for="field_nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                    ng-model="vm.banda.nombre"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.banda.localizacion" for="field_localizacion">Localizacion</label>
+            <input type="text" class="form-control" name="localizacion" id="field_localizacion"
+                    ng-model="vm.banda.localizacion"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.banda.datacreacion" for="field_datacreacion">Datacreacion</label>
+                <div class="input-group">
+                    <input id="field_datacreacion" type="text" class="form-control" name="datacreacion" uib-datepicker-popup="{{dateformat}}" ng-model="vm.banda.datacreacion" is-open="vm.datePickerOpenStatus.datacreacion"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('datacreacion')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.banda.anosactivo" for="field_anosactivo">Anosactivo</label>
+                <div class="input-group">
+                    <input id="field_anosactivo" type="text" class="form-control" name="anosactivo" uib-datepicker-popup="{{dateformat}}" ng-model="vm.banda.anosactivo" is-open="vm.datePickerOpenStatus.anosactivo"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('anosactivo')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.banda.temas" for="field_temas">Temas</label>
+            <input type="text" class="form-control" name="temas" id="field_temas"
+                    ng-model="vm.banda.temas"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.banda.discografica" for="field_discografica">Discografica</label>
+            <input type="text" class="form-control" name="discografica" id="field_discografica"
+                    ng-model="vm.banda.discografica"
+                    />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setFoto($file, vm.banda)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="rocktionaryApp.banda.foto" for="field_foto">Foto</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.banda.fotoContentType + ';base64,' + vm.banda.foto}}" style="max-height: 100px;" ng-if="vm.banda.foto" alt="banda image"/>
+                <div ng-if="vm.banda.foto" class="help-block clearfix">
+                    <span class="pull-left">{{vm.banda.fotoContentType}}, {{vm.byteSize(vm.banda.foto)}}</span>
+                    <button type="button" ng-click="vm.banda.foto=null;vm.banda.fotoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setFoto($file, vm.banda)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="foto" id="field_foto"
+                    ng-model="vm.banda.foto"
+                    />
+            <input type="hidden" class="form-control" name="fotoContentType" id="field_fotoContentType"
+                    ng-model="vm.banda.fotoContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setLogo($file, vm.banda)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="rocktionaryApp.banda.logo" for="field_logo">Logo</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.banda.logoContentType + ';base64,' + vm.banda.logo}}" style="max-height: 100px;" ng-if="vm.banda.logo" alt="banda image"/>
+                <div ng-if="vm.banda.logo" class="help-block clearfix">
+                    <span class="pull-left">{{vm.banda.logoContentType}}, {{vm.byteSize(vm.banda.logo)}}</span>
+                    <button type="button" ng-click="vm.banda.logo=null;vm.banda.logoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setLogo($file, vm.banda)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="logo" id="field_logo"
+                    ng-model="vm.banda.logo"
+                    />
+            <input type="hidden" class="form-control" name="logoContentType" id="field_logoContentType"
+                    ng-model="vm.banda.logoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.banda.pais" for="field_pais">Pais</label>
+            <input type="text" class="form-control" name="pais" id="field_pais"
+                    ng-model="vm.banda.pais"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.banda.estado" for="field_estado">Estado</label>
+            <input type="text" class="form-control" name="estado" id="field_estado"
+                    ng-model="vm.banda.estado"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.banda.genero" for="field_genero">Genero</label>
+            <input type="text" class="form-control" name="genero" id="field_genero"
+                    ng-model="vm.banda.genero"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.banda.biografia" for="field_biografia">Biografia</label>
+            <input type="text" class="form-control" name="biografia" id="field_biografia"
+                    ng-model="vm.banda.biografia"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="rocktionaryApp.banda.discografica" for="field_discografica">Discografica</label>
+            <select class="form-control" id="field_discografica" multiple name="discografica" ng-model="vm.banda.discograficas" ng-options="discografica as discografica.nombre for discografica in vm.discograficas track by discografica.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="rocktionaryApp.puntuacionBanda.detail.title">Puntuacion Banda</span> {{vm.puntuacionBanda.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="rocktionaryApp.puntuacionBanda.valoracion">Valoracion</span></dt>
+        <dd>
+            <span>{{vm.puntuacionBanda.valoracion}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.puntuacionBanda.fechaPuntuacion">Fecha Puntuacion</span></dt>
+        <dd>
+            <span>{{vm.puntuacionBanda.fechaPuntuacion | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.puntuacionBanda.user">User</span></dt>
+        <dd>
+            {{vm.puntuacionBanda.user.login}}
+        </dd>
+        <dt><span data-translate="rocktionaryApp.puntuacionBanda.banda">Banda</span></dt>
+        <dd>
+            <a ui-sref="banda-detail({id:vm.puntuacionBanda.banda.id})">{{vm.puntuacionBanda.banda.nombre}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="puntuacion-banda-detail.edit({id:vm.puntuacionBanda.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

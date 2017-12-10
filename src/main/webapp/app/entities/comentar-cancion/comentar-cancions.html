@@ -1,0 +1,66 @@
+<div>
+    <h2 data-translate="rocktionaryApp.comentarCancion.home.title">Comentar Cancions</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="comentar-cancion.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="rocktionaryApp.comentarCancion.home.createLabel">
+                        Create new Comentar Cancion
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="rocktionaryApp.comentarCancion.comentario">Comentario</span></th>
+                    <th><span data-translate="rocktionaryApp.comentarCancion.fechaComentario">Fecha Comentario</span></th>
+                    <th><span data-translate="rocktionaryApp.comentarCancion.user">User</span></th>
+                    <th><span data-translate="rocktionaryApp.comentarCancion.cancion">Cancion</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="comentarCancion in vm.comentarCancions track by comentarCancion.id">
+                    <td><a ui-sref="comentar-cancion-detail({id:comentarCancion.id})">{{comentarCancion.id}}</a></td>
+                    <td>{{comentarCancion.comentario}}</td>
+                    <td>{{comentarCancion.fechaComentario | date:'medium'}}</td>
+                    <td>
+                        {{comentarCancion.user.login}}
+                    </td>
+                    <td>
+                        <a ui-sref="cancion-detail({id:comentarCancion.cancion.id})">{{comentarCancion.cancion.nombre}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="comentar-cancion-detail({id:comentarCancion.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="comentar-cancion.edit({id:comentarCancion.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="comentar-cancion.delete({id:comentarCancion.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

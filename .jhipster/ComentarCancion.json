@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "cancion",
+            "otherEntityName": "cancion",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "comentario",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fechaComentario",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20171210230422",
+    "entityTableName": "comentar_cancion",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

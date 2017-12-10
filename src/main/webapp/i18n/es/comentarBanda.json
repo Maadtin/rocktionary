@@ -1,0 +1,24 @@
+{
+    "rocktionaryApp": {
+        "comentarBanda" : {
+            "home": {
+                "title": "Comentar Bandas",
+                "createLabel": "Crear nuevo Comentar Banda",
+                "createOrEditLabel": "Crear o editar Comentar Banda"
+            },
+            "created": "Un nuevo Comentar Banda ha sido creado con el identificador {{ param }}",
+            "updated": "Un Comentar Banda ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Comentar Banda ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Comentar Banda {{ id }}?"
+            },
+            "detail": {
+                "title": "Comentar Banda"
+            },
+            "comentario": "Comentario",
+            "fechaComentario": "Fecha Comentario",
+            "user": "User",
+            "banda": "Banda"
+        }
+    }
+}

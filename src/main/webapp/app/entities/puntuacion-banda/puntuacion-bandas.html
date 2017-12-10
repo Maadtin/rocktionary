@@ -1,0 +1,66 @@
+<div>
+    <h2 data-translate="rocktionaryApp.puntuacionBanda.home.title">Puntuacion Bandas</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="puntuacion-banda.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="rocktionaryApp.puntuacionBanda.home.createLabel">
+                        Create new Puntuacion Banda
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="rocktionaryApp.puntuacionBanda.valoracion">Valoracion</span></th>
+                    <th><span data-translate="rocktionaryApp.puntuacionBanda.fechaPuntuacion">Fecha Puntuacion</span></th>
+                    <th><span data-translate="rocktionaryApp.puntuacionBanda.user">User</span></th>
+                    <th><span data-translate="rocktionaryApp.puntuacionBanda.banda">Banda</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="puntuacionBanda in vm.puntuacionBandas track by puntuacionBanda.id">
+                    <td><a ui-sref="puntuacion-banda-detail({id:puntuacionBanda.id})">{{puntuacionBanda.id}}</a></td>
+                    <td>{{puntuacionBanda.valoracion}}</td>
+                    <td>{{puntuacionBanda.fechaPuntuacion | date:'medium'}}</td>
+                    <td>
+                        {{puntuacionBanda.user.login}}
+                    </td>
+                    <td>
+                        <a ui-sref="banda-detail({id:puntuacionBanda.banda.id})">{{puntuacionBanda.banda.nombre}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="puntuacion-banda-detail({id:puntuacionBanda.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="puntuacion-banda.edit({id:puntuacionBanda.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="puntuacion-banda.delete({id:puntuacionBanda.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

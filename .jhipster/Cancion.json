@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "album",
+            "otherEntityName": "album",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "puntuacione",
+            "otherEntityName": "puntuacionCancion",
+            "otherEntityRelationshipName": "cancion"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "comentario",
+            "otherEntityName": "comentarCancion",
+            "otherEntityRelationshipName": "cancion"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "duracion",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "letra",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171210230420",
+    "entityTableName": "cancion",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

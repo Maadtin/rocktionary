@@ -1,0 +1,56 @@
+
+<div>
+    <h2><span data-translate="rocktionaryApp.componente.detail.title">Componente</span> {{vm.componente.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="rocktionaryApp.componente.nombre">Nombre</span></dt>
+        <dd>
+            <span>{{vm.componente.nombre}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.componente.edad">Edad</span></dt>
+        <dd>
+            <span>{{vm.componente.edad}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.componente.sexo">Sexo</span></dt>
+        <dd>
+            <span>{{vm.componente.sexo}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.componente.funcionGrupo">Funcion Grupo</span></dt>
+        <dd>
+            <span>{{vm.componente.funcionGrupo}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.componente.foto">Foto</span></dt>
+        <dd>
+            <div ng-if="vm.componente.foto">
+                <a ng-click="vm.openFile(vm.componente.fotoContentType, vm.componente.foto)">
+                    <img data-ng-src="{{'data:' + vm.componente.fotoContentType + ';base64,' + vm.componente.foto}}" style="max-width: 100%;" alt="componente image"/>
+                </a>
+                {{vm.componente.fotoContentType}}, {{vm.byteSize(vm.componente.foto)}}
+            </div>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.componente.fechaEntrada">Fecha Entrada</span></dt>
+        <dd>
+            <span>{{vm.componente.fechaEntrada | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.componente.fechaSalida">Fecha Salida</span></dt>
+        <dd>
+            <span>{{vm.componente.fechaSalida | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.componente.banda">Banda</span></dt>
+        <dd>
+            <a ui-sref="banda-detail({id:vm.componente.banda.id})">{{vm.componente.banda.nombre}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="componente-detail.edit({id:vm.componente.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

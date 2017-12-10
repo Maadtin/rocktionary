@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "banda",
+            "otherEntityName": "banda",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "edad",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "sexo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "funcionGrupo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "foto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "fechaEntrada",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fechaSalida",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20171210230415",
+    "entityTableName": "componente",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

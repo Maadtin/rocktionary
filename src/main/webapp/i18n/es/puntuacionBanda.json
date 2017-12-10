@@ -1,0 +1,24 @@
+{
+    "rocktionaryApp": {
+        "puntuacionBanda" : {
+            "home": {
+                "title": "Puntuacion Bandas",
+                "createLabel": "Crear nuevo Puntuacion Banda",
+                "createOrEditLabel": "Crear o editar Puntuacion Banda"
+            },
+            "created": "Un nuevo Puntuacion Banda ha sido creado con el identificador {{ param }}",
+            "updated": "Un Puntuacion Banda ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Puntuacion Banda ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Puntuacion Banda {{ id }}?"
+            },
+            "detail": {
+                "title": "Puntuacion Banda"
+            },
+            "valoracion": "Valoracion",
+            "fechaPuntuacion": "Fecha Puntuacion",
+            "user": "User",
+            "banda": "Banda"
+        }
+    }
+}

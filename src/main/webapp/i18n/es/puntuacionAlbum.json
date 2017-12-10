@@ -1,0 +1,24 @@
+{
+    "rocktionaryApp": {
+        "puntuacionAlbum" : {
+            "home": {
+                "title": "Puntuacion Albums",
+                "createLabel": "Crear nuevo Puntuacion Album",
+                "createOrEditLabel": "Crear o editar Puntuacion Album"
+            },
+            "created": "Un nuevo Puntuacion Album ha sido creado con el identificador {{ param }}",
+            "updated": "Un Puntuacion Album ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Puntuacion Album ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Puntuacion Album {{ id }}?"
+            },
+            "detail": {
+                "title": "Puntuacion Album"
+            },
+            "valoracion": "Valoracion",
+            "fechaPuntuacion": "Fecha Puntuacion",
+            "user": "User",
+            "album": "Album"
+        }
+    }
+}

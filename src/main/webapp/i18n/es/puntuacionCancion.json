@@ -1,0 +1,24 @@
+{
+    "rocktionaryApp": {
+        "puntuacionCancion" : {
+            "home": {
+                "title": "Puntuacion Cancions",
+                "createLabel": "Crear nuevo Puntuacion Cancion",
+                "createOrEditLabel": "Crear o editar Puntuacion Cancion"
+            },
+            "created": "Un nuevo Puntuacion Cancion ha sido creado con el identificador {{ param }}",
+            "updated": "Un Puntuacion Cancion ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Puntuacion Cancion ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Puntuacion Cancion {{ id }}?"
+            },
+            "detail": {
+                "title": "Puntuacion Cancion"
+            },
+            "valoracion": "Valoracion",
+            "fechaPuntuacion": "Fecha Puntuacion",
+            "user": "User",
+            "cancion": "Cancion"
+        }
+    }
+}

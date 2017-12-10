@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "banda",
+            "otherEntityName": "banda",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "valoracion",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "fechaPuntuacion",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20171210230416",
+    "entityTableName": "puntuacion_banda",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

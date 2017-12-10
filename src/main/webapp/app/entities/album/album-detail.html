@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span data-translate="rocktionaryApp.album.detail.title">Album</span> {{vm.album.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="rocktionaryApp.album.genero">Genero</span></dt>
+        <dd>
+            <span>{{vm.album.genero}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.album.nombre">Nombre</span></dt>
+        <dd>
+            <span>{{vm.album.nombre}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.album.numCanciones">Num Canciones</span></dt>
+        <dd>
+            <span>{{vm.album.numCanciones}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.album.formato">Formato</span></dt>
+        <dd>
+            <span>{{vm.album.formato}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.album.numCopias">Num Copias</span></dt>
+        <dd>
+            <span>{{vm.album.numCopias}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.album.reviews">Reviews</span></dt>
+        <dd>
+            <span>{{vm.album.reviews}}</span>
+        </dd>
+        <dt><span data-translate="rocktionaryApp.album.discografica">Discografica</span></dt>
+        <dd>
+            <a ui-sref="discografica-detail({id:vm.album.discografica.id})">{{vm.album.discografica.nombre}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="album-detail.edit({id:vm.album.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

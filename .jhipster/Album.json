@@ -1,0 +1,61 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "discografica",
+            "otherEntityName": "discografica",
+            "otherEntityField": "nombre"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "puntuacione",
+            "otherEntityName": "puntuacionAlbum",
+            "otherEntityRelationshipName": "album"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "comentario",
+            "otherEntityName": "comentarAlbum",
+            "otherEntityRelationshipName": "album"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "cancione",
+            "otherEntityName": "cancion",
+            "otherEntityRelationshipName": "album"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "genero",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numCanciones",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "formato",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numCopias",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "reviews",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171210230419",
+    "entityTableName": "album",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

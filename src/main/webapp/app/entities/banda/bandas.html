@@ -1,0 +1,94 @@
+<div>
+    <h2 data-translate="rocktionaryApp.banda.home.title">Bandas</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="banda.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="rocktionaryApp.banda.home.createLabel">
+                        Create new Banda
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.nombre">Nombre</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.localizacion">Localizacion</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.datacreacion">Datacreacion</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.anosactivo">Anosactivo</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.temas">Temas</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.discografica">Discografica</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.foto">Foto</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.logo">Logo</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.pais">Pais</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.estado">Estado</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.genero">Genero</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.biografia">Biografia</span></th>
+                    <th><span data-translate="rocktionaryApp.banda.discografica">Discografica</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="banda in vm.bandas track by banda.id">
+                    <td><a ui-sref="banda-detail({id:banda.id})">{{banda.id}}</a></td>
+                    <td>{{banda.nombre}}</td>
+                    <td>{{banda.localizacion}}</td>
+                        <td>{{banda.datacreacion | date:'mediumDate'}}</td>
+                        <td>{{banda.anosactivo | date:'mediumDate'}}</td>
+                    <td>{{banda.temas}}</td>
+                    <td>{{banda.discografica}}</td>
+                    <td>
+                        <a ng-if="banda.foto" ng-click="vm.openFile(banda.fotoContentType, banda.foto)">
+                            <img data-ng-src="{{'data:' + banda.fotoContentType + ';base64,' + banda.foto}}" style="max-height: 30px;" alt="banda image"/>
+                        </a>
+                        <span ng-if="banda.foto">{{banda.fotoContentType}}, {{vm.byteSize(banda.foto)}}</span>
+                    </td>
+                    <td>
+                        <a ng-if="banda.logo" ng-click="vm.openFile(banda.logoContentType, banda.logo)">
+                            <img data-ng-src="{{'data:' + banda.logoContentType + ';base64,' + banda.logo}}" style="max-height: 30px;" alt="banda image"/>
+                        </a>
+                        <span ng-if="banda.logo">{{banda.logoContentType}}, {{vm.byteSize(banda.logo)}}</span>
+                    </td>
+                    <td>{{banda.pais}}</td>
+                    <td>{{banda.estado}}</td>
+                    <td>{{banda.genero}}</td>
+                    <td>{{banda.biografia}}</td>
+                    <td>
+                        <span ng-repeat="discografica in banda.discograficas">
+                            <a class="form-control-static" ui-sref="discografica-detail({id: discografica.id})">{{discografica.nombre}}</a>{{$last ? '' : ', '}}
+                        </span>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="banda-detail({id:banda.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="banda.edit({id:banda.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="banda.delete({id:banda.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

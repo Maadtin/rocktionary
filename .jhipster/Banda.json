@@ -1,0 +1,89 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "banda",
+            "relationshipName": "discografica",
+            "otherEntityName": "discografica",
+            "otherEntityField": "nombre",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "componente",
+            "otherEntityName": "componente",
+            "otherEntityRelationshipName": "banda"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "puntuacione",
+            "otherEntityName": "puntuacionBanda",
+            "otherEntityRelationshipName": "banda"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "comentario",
+            "otherEntityName": "comentarBanda",
+            "otherEntityRelationshipName": "banda"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "localizacion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "datacreacion",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "anosactivo",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "temas",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "discografica",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "foto",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "logo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "pais",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "estado",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "genero",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "biografia",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20171210230413",
+    "entityTableName": "banda",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

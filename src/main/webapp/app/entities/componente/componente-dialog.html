@@ -1,0 +1,98 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myComponenteLabel" data-translate="rocktionaryApp.componente.home.createOrEditLabel">Create or edit a Componente</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.componente.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.componente.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.componente.nombre" for="field_nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                    ng-model="vm.componente.nombre"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.componente.edad" for="field_edad">Edad</label>
+            <input type="number" class="form-control" name="edad" id="field_edad"
+                    ng-model="vm.componente.edad"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.componente.sexo" for="field_sexo">Sexo</label>
+            <input type="text" class="form-control" name="sexo" id="field_sexo"
+                    ng-model="vm.componente.sexo"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.componente.funcionGrupo" for="field_funcionGrupo">Funcion Grupo</label>
+            <input type="text" class="form-control" name="funcionGrupo" id="field_funcionGrupo"
+                    ng-model="vm.componente.funcionGrupo"
+                    />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setFoto($file, vm.componente)" ngf-pattern="'image/*'">
+            <label class="control-label" data-translate="rocktionaryApp.componente.foto" for="field_foto">Foto</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.componente.fotoContentType + ';base64,' + vm.componente.foto}}" style="max-height: 100px;" ng-if="vm.componente.foto" alt="componente image"/>
+                <div ng-if="vm.componente.foto" class="help-block clearfix">
+                    <span class="pull-left">{{vm.componente.fotoContentType}}, {{vm.byteSize(vm.componente.foto)}}</span>
+                    <button type="button" ng-click="vm.componente.foto=null;vm.componente.fotoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setFoto($file, vm.componente)" accept="image/*" data-translate="entity.action.addimage">
+                    Add image
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="foto" id="field_foto"
+                    ng-model="vm.componente.foto"
+                    />
+            <input type="hidden" class="form-control" name="fotoContentType" id="field_fotoContentType"
+                    ng-model="vm.componente.fotoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.componente.fechaEntrada" for="field_fechaEntrada">Fecha Entrada</label>
+                <div class="input-group">
+                    <input id="field_fechaEntrada" type="text" class="form-control" name="fechaEntrada" uib-datepicker-popup="{{dateformat}}" ng-model="vm.componente.fechaEntrada" is-open="vm.datePickerOpenStatus.fechaEntrada"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaEntrada')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="rocktionaryApp.componente.fechaSalida" for="field_fechaSalida">Fecha Salida</label>
+                <div class="input-group">
+                    <input id="field_fechaSalida" type="text" class="form-control" name="fechaSalida" uib-datepicker-popup="{{dateformat}}" ng-model="vm.componente.fechaSalida" is-open="vm.datePickerOpenStatus.fechaSalida"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('fechaSalida')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="rocktionaryApp.componente.banda" for="field_banda">Banda</label>
+            <select class="form-control" id="field_banda" name="banda" ng-model="vm.componente.banda" ng-options="banda as banda.nombre for banda in vm.bandas track by banda.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

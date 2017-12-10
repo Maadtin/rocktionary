@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "cancion",
+            "otherEntityName": "cancion",
+            "otherEntityField": "nombre"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "valoracion",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "fechaPuntuacion",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20171210230418",
+    "entityTableName": "puntuacion_cancion",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

@@ -1,0 +1,24 @@
+{
+    "rocktionaryApp": {
+        "comentarCancion" : {
+            "home": {
+                "title": "Comentar Cancions",
+                "createLabel": "Crear nuevo Comentar Cancion",
+                "createOrEditLabel": "Crear o editar Comentar Cancion"
+            },
+            "created": "Un nuevo Comentar Cancion ha sido creado con el identificador {{ param }}",
+            "updated": "Un Comentar Cancion ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un Comentar Cancion ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar Comentar Cancion {{ id }}?"
+            },
+            "detail": {
+                "title": "Comentar Cancion"
+            },
+            "comentario": "Comentario",
+            "fechaComentario": "Fecha Comentario",
+            "user": "User",
+            "cancion": "Cancion"
+        }
+    }
+}

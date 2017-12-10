@@ -1,0 +1,77 @@
+<div>
+    <h2 data-translate="rocktionaryApp.componente.home.title">Componentes</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="componente.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="rocktionaryApp.componente.home.createLabel">
+                        Create new Componente
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span data-translate="global.field.id">ID</span></th>
+                    <th><span data-translate="rocktionaryApp.componente.nombre">Nombre</span></th>
+                    <th><span data-translate="rocktionaryApp.componente.edad">Edad</span></th>
+                    <th><span data-translate="rocktionaryApp.componente.sexo">Sexo</span></th>
+                    <th><span data-translate="rocktionaryApp.componente.funcionGrupo">Funcion Grupo</span></th>
+                    <th><span data-translate="rocktionaryApp.componente.foto">Foto</span></th>
+                    <th><span data-translate="rocktionaryApp.componente.fechaEntrada">Fecha Entrada</span></th>
+                    <th><span data-translate="rocktionaryApp.componente.fechaSalida">Fecha Salida</span></th>
+                    <th><span data-translate="rocktionaryApp.componente.banda">Banda</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="componente in vm.componentes track by componente.id">
+                    <td><a ui-sref="componente-detail({id:componente.id})">{{componente.id}}</a></td>
+                    <td>{{componente.nombre}}</td>
+                    <td>{{componente.edad}}</td>
+                    <td>{{componente.sexo}}</td>
+                    <td>{{componente.funcionGrupo}}</td>
+                    <td>
+                        <a ng-if="componente.foto" ng-click="vm.openFile(componente.fotoContentType, componente.foto)">
+                            <img data-ng-src="{{'data:' + componente.fotoContentType + ';base64,' + componente.foto}}" style="max-height: 30px;" alt="componente image"/>
+                        </a>
+                        <span ng-if="componente.foto">{{componente.fotoContentType}}, {{vm.byteSize(componente.foto)}}</span>
+                    </td>
+                        <td>{{componente.fechaEntrada | date:'mediumDate'}}</td>
+                        <td>{{componente.fechaSalida | date:'mediumDate'}}</td>
+                    <td>
+                        <a ui-sref="banda-detail({id:componente.banda.id})">{{componente.banda.nombre}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="componente-detail({id:componente.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="componente.edit({id:componente.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="componente.delete({id:componente.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

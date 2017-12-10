@@ -1,0 +1,23 @@
+{
+    "rocktionaryApp": {
+        "userFollowingUser" : {
+            "home": {
+                "title": "User Following Users",
+                "createLabel": "Crear nuevo User Following User",
+                "createOrEditLabel": "Crear o editar User Following User"
+            },
+            "created": "Un nuevo User Following User ha sido creado con el identificador {{ param }}",
+            "updated": "Un User Following User ha sido actualizado con el identificador {{ param }}",
+            "deleted": "Un User Following User ha sido eliminado con el identificador {{ param }}",
+            "delete": {
+                "question": "¿Seguro que quiere eliminar User Following User {{ id }}?"
+            },
+            "detail": {
+                "title": "User Following User"
+            },
+            "since": "Since",
+            "usuarioOrigen": "Usuario Origen",
+            "usuarioDestino": "Usuario Destino"
+        }
+    }
+}

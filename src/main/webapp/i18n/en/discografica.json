@@ -1,0 +1,23 @@
+{
+    "rocktionaryApp": {
+        "discografica" : {
+            "home": {
+                "title": "Discograficas",
+                "createLabel": "Create a new Discografica",
+                "createOrEditLabel": "Create or edit a Discografica"
+            },
+            "created": "A new Discografica is created with identifier {{ param }}",
+            "updated": "A Discografica is updated with identifier {{ param }}",
+            "deleted": "A Discografica is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Discografica {{ id }}?"
+            },
+            "detail": {
+                "title": "Discografica"
+            },
+            "nombre": "Nombre",
+            "album": "Album",
+            "banda": "Banda"
+        }
+    }
+}
