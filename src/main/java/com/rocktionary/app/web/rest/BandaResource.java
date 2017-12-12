@@ -116,4 +116,11 @@ public class BandaResource {
         bandaRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/get-banda-by-nombre/{bandaNombre}")
+    public List<Banda> getBandasByNombre(@PathVariable String bandaNombre) {
+        return bandaRepository.findByNombreContaining(bandaNombre);
+    }
+
+
 }

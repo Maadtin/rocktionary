@@ -116,4 +116,11 @@ public class AlbumResource {
         albumRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+
+    @GetMapping("/get-album-by-nombre/{albumNombre}")
+    public List<Album> getAlbumByNombre(@PathVariable String albumNombre) {
+        return albumRepository.findByNombreContaining(albumNombre);
+    }
+
 }

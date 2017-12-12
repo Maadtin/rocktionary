@@ -16,6 +16,9 @@ public interface BandaRepository extends JpaRepository<Banda, Long> {
     @Query("select distinct banda from Banda banda left join fetch banda.discograficas")
     List<Banda> findAllWithEagerRelationships();
 
+    List<Banda> findByNombreContaining(String bandaNombre);
+
+
     @Query("select banda from Banda banda left join fetch banda.discograficas where banda.id =:id")
     Banda findOneWithEagerRelationships(@Param("id") Long id);
 

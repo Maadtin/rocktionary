@@ -116,4 +116,11 @@ public class CancionResource {
         cancionRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/get-cancion-by-nombre/{cancionNombre}")
+    public List<Cancion> getCancionByNombre(@PathVariable String cancionNombre) {
+        return cancionRepository.findByNombreContaining(cancionNombre);
+    }
+
+
 }
