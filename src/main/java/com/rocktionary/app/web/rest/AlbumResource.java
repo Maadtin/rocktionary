@@ -118,7 +118,7 @@ public class AlbumResource {
     }
 
 
-    @GetMapping("/get-album-by-nombre/{albumNombre}")
+    @GetMapping("/get-albumes-by-nombre/{albumNombre}")
     public List<Album> getAlbumByNombre(@PathVariable String albumNombre) {
         return albumRepository.findByNombreContaining(albumNombre);
     }

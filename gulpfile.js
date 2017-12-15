@@ -201,7 +201,7 @@ gulp.task('sass', () => {
 
 gulp.task('servir', ['sass'], () => {
     browserSync.init({
-    server: config.app
+    proxy: "localhost:8080"
 });
 
 gulp.watch(config.sassSrc, ['sass']);

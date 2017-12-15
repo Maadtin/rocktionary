@@ -4,11 +4,34 @@
     </div>
     <form class="col-xs-10 col-xs-offset-1">
         <p class="home__cta subtitle">Buscar</p>
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3 home__labels">
+            <span ng-click="vm.handleClassChange('canciones', $event); vm.handleOnInputChange()">Canciones</span>
+            <span ng-click="vm.handleClassChange('albumes', $event); vm.handleOnInputChange()" class="active">Albumes</span>
+            <span ng-click="vm.handleClassChange('bandas', $event); vm.handleOnInputChange()">Bandas</span>
+        </div>
         <div class="form-group col-xs-12 col-sm-6 col-sm-offset-3">
-            <input autocomplete="off" ng-change="vm.handleOnInputChange()" ng-model="vm.inputSearch" type="search" name="search" placeholder="Busca..." class="form-control home__input-search">
-            <ul ng-class="{'is-visible': vm.showResults}" class="home__search-results">
-                <li>Results</li>
-            </ul>
+            <input autocomplete="off"
+                   ng-keyup="vm.onEnterKey($event)"
+                   ng-change="vm.handleOnInputChange()"
+                   ng-model="vm.inputSearch"
+                   type="search"
+                   name="search"
+                   placeholder="Buscar {{vm.placeHolderText}}..."
+                   class="form-control home__input-search">
+            <div ng-class="{'is-visible': vm.showResults}" class="home__search-results">
+                <img ng-if="vm.isLoading" class="home__loader" src="/content/images/loader.gif" alt="">
+                <div ng-if="!vm.isLoading">
+                    <p ng-if="vm.listaResultados.length === 0">No se encontraron resultados con tu búsqueda :(</p>
+                    <div ng-if="vm.listaResultados.length > 0" ng-repeat="resultado in vm.listaResultados">
+                        <p>Resultados en {{vm.placeHolderText}}</p>
+                        <div ng-if="vm.placeHolderText === 'bandas'" ng-repeat="banda in vm.listaResultados">
+                            <p>{{banda.nombre}}</p>
+                            <p>{{banda.datacreacion}}</p>
+                            <img src="" alt="Foto">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
 </div>

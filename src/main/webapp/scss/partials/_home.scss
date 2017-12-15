@@ -1,9 +1,48 @@
 .home {
 
+    &__loader {
+        width: 25px;
+        display: block;
+        margin: 10px auto;
+    }
+
     margin-top: 20px;
 
     &__logo {
         margin: 0 auto;
+    }
+
+    &__labels {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        @media (min-width: 600px) {
+            justify-content: center;
+        }
+
+        span {
+            display: block;
+            padding: .5em;
+            border: $thin-border;
+            border-radius: 2px;
+            transition: all ease-out 0.2s;
+            outline: none;
+
+            @media (min-width: 600px) {
+                margin: 0 10px;
+            }
+
+            &:hover, &.active {
+                transform: scale(1.1);
+                background-color: rgba($secondary, 0.5);
+            }
+
+            &.active {
+                background-color: rgba($secondary, 1);
+            }
+        }
     }
 
     &__input-search {
@@ -35,3 +74,11 @@
 
 
 }
+
+
+
+
+
+//// libro below
+
+

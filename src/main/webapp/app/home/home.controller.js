@@ -5,14 +5,53 @@
         .module('rocktionaryApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'HomeService'];
 
-    function HomeController ($scope, Principal, LoginService, $state) {
+    function HomeController ($scope, Principal, LoginService, $state, HomeService) {
 
         var vm = this;
 
+        ///
+        vm.placeHolderText = 'albumes';
+        let timeOut = null;
+
+        vm.onEnterKey = $event => {
+
+            if ($event.key === 'Enter') {
+                vm.handleOnInputChange()
+            }
+
+        }
+
+        vm.handleClassChange = function (filter, e) {
+            angular.element(e.target).siblings().removeClass();
+            angular.element(e.target).addClass('active')
+
+            vm.placeHolderText = filter;
+        }
+
+        let onData = data => {
+            vm.isLoading = false;
+            vm.listaResultados = data;
+        }
+
+        let onError = err => {
+            console.log(err)
+        }
+
         vm.handleOnInputChange = function () {
             vm.showResults = !!vm.inputSearch;
+            let endPoint = `http://localhost:8080/api/get-${vm.placeHolderText}-by-nombre`;
+            vm.isLoading = true;
+            clearTimeout(timeOut)
+            timeOut = setTimeout ( () => {
+                HomeService
+                    .busqueda(endPoint)
+                    .query({input: vm.inputSearch})
+                    .$promise
+                    .then(onData,onError)
+            }, 500)
+
         };
 
         vm.account = null;
@@ -34,5 +73,7 @@
         function register () {
             $state.go('register');
         }
+
+
     }
 })();
