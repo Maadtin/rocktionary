@@ -14,6 +14,7 @@
                    ng-keyup="vm.onEnterKey($event)"
                    ng-change="vm.handleOnInputChange()"
                    ng-model="vm.inputSearch"
+                   id="input"
                    type="search"
                    name="search"
                    placeholder="Buscar {{vm.placeHolderText}}..."
@@ -21,11 +22,11 @@
             <div ng-class="{'is-visible': vm.showResults}" class="home__search-results">
                 <img ng-if="vm.isLoading" class="home__loader" src="/content/images/loader.gif" alt="">
                 <div ng-if="!vm.isLoading">
-                    <p ng-if="vm.listaResultados.length === 0">No se encontraron resultados con tu búsqueda :(</p>
-                    <div ng-if="vm.listaResultados.length > 0" ng-repeat="resultado in vm.listaResultados">
+                    <p ng-if="vm.notFound">{{vm.notFoundMsg}}</p>
+                    <div ng-if="!vm.notFound" ng-repeat="resultado in vm.listaResultados">
                         <p>Resultados en {{vm.placeHolderText}}</p>
                         <div ng-if="vm.placeHolderText === 'bandas'" ng-repeat="banda in vm.listaResultados">
-                            <p>{{banda.nombre}}</p>
+                            <strong class="text-uppercase">{{banda.nombre}}</strong>
                             <p>{{banda.datacreacion}}</p>
                             <img src="" alt="Foto">
                         </div>
