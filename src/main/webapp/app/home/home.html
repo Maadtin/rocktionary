@@ -9,16 +9,19 @@
             <span ng-click="vm.handleClassChange('albumes', $event); vm.handleOnInputChange()" class="active">Albumes</span>
             <span ng-click="vm.handleClassChange('bandas', $event); vm.handleOnInputChange()">Bandas</span>
         </div>
+        <div class="form-group col-xs-12 col-sm-6 col-sm-offset-3 home__search-container">
+                <input autocomplete="off"
+                       ng-keyup="vm.onEnterKey($event)"
+                       ng-change="vm.handleOnInputChange() "
+                       ng-model="vm.inputSearch"
+                       id="input"
+                       type="search"
+                       name="search"
+                       placeholder="Buscar {{vm.placeHolderText}}..."
+                       class="form-control home__input-search">
+            <i class="fa {{vm.isListening ? 'fa-microphone isListening' : 'fa-microphone-slash'}}" ng-click="vm.triggerMic()" aria-hidden="true"></i>
+        </div>
         <div class="form-group col-xs-12 col-sm-6 col-sm-offset-3">
-            <input autocomplete="off"
-                   ng-keyup="vm.onEnterKey($event)"
-                   ng-change="vm.handleOnInputChange()"
-                   ng-model="vm.inputSearch"
-                   id="input"
-                   type="search"
-                   name="search"
-                   placeholder="Buscar {{vm.placeHolderText}}..."
-                   class="form-control home__input-search">
             <div ng-class="{'is-visible': vm.showResults}" class="home__search-results">
                 <img ng-if="vm.isLoading" class="home__loader" src="/content/images/loader.gif" alt="">
                 <div ng-if="!vm.isLoading">
@@ -34,5 +37,7 @@
                 </div>
             </div>
         </div>
+
+
     </form>
 </div>

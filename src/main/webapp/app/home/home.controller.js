@@ -14,13 +14,39 @@
         ///
         vm.placeHolderText = 'albumes';
         let timeOut = null;
+        let recognition = new webkitSpeechRecognition();
+        vm.isListening = false;
 
-        let recognition = new webkitSpeechRecognition()
-        recognition.interimResults = true
-        recognition.start()
+        recognition.addEventListener('start', function () {
 
-        recognition.lang = 'es-ES';
+            vm.isListening = true;
+            $scope.$apply()
+        })
 
+        recognition.addEventListener('end', function () {
+
+            vm.isListening = false
+            $scope.$apply()
+        })
+
+
+        vm.triggerMic = () => {
+
+            recognition.continuous = true;
+            recognition.interimResults = true;
+;
+            recognition.lang = 'es-ES';
+
+            if (vm.isListening) {
+                recognition.stop()
+                return;
+            }
+
+
+
+            recognition.start()
+
+        }
 
         recognition.addEventListener('result', function (e) {
 
@@ -30,12 +56,16 @@
 
             if (e.results[0].isFinal) {
                 vm.handleOnInputChange()
+                vm.isListening && recognition.stop()
+                $scope.apply()
             }
-            $scope.$apply()
 
+            $scope.$apply()
         });
 
-        recognition.addEventListener('end', recognition.start);
+        //recognition.addEventListener('end', recognition.start);
+
+
 
         vm.onEnterKey = $event => {
 
@@ -82,16 +112,19 @@
 
         vm.handleOnInputChange = function () {
             vm.showResults = !!vm.inputSearch;
-            let endPoint = `http://localhost:8080/api/get-${vm.placeHolderText}-by-nombre`;
-            vm.isLoading = true;
-            clearTimeout(timeOut);
-            timeOut = setTimeout ( () => {
-                HomeService
-                    .busqueda(endPoint)
-                    .query({input: vm.inputSearch})
-                    .$promise
-                    .then(onData,onError)
-            }, 500)
+            if (vm.inputSearch) {
+
+                let endPoint = `http://localhost:8080/api/get-${vm.placeHolderText}-by-nombre`;
+                vm.isLoading = true;
+                clearTimeout(timeOut);
+                timeOut = setTimeout ( () => {
+                    HomeService
+                        .busqueda(endPoint)
+                        .query({input: vm.inputSearch})
+                        .$promise
+                        .then(onData,onError)
+                }, 500)
+            }
 
         };
 

@@ -45,6 +45,26 @@
         }
     }
 
+    &__search-container {
+        position: relative;
+        margin-bottom: 0;
+        i {
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            outline: 0;
+            transform-origin: top right;
+            transition: font-size ease-in 0.2s;
+            &.isListening {
+                font-size: 22px;
+            }
+        }
+    }
+
     &__input-search {
         border: $thin-border;
         background-color: $primary;
