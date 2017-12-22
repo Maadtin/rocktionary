@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 // cambio en mi propia rama
+// conflicto bueno :)
 /**
  * A Banda.
  */
