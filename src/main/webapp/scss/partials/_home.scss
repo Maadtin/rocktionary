@@ -6,6 +6,20 @@
         margin: 10px auto;
     }
 
+    &__card-container {
+        > div {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        p {
+
+        }
+        img {
+            width: 140px;
+        }
+    }
+
     margin-top: 20px;
 
     &__logo {
