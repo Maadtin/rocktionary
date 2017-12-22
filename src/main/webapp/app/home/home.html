@@ -49,25 +49,28 @@
             <div ng-class="{'is-visible': vm.showResults}" class="home__search-results">
                 <img ng-if="vm.isLoading" class="home__loader" src="/content/images/loader.gif" alt="">
                 <div ng-if="!vm.isLoading">
-                    <p ng-if="vm.notFound">{{vm.notFoundMsg}}</p>
-                    <div class="home__card-container" ng-if="!vm.notFound" ng-repeat="resultado in vm.listaResultados">
+                    <p class="notFoundMsg" ng-if="vm.notFound">{{vm.notFoundMsg}}</p>
+                    <div class="home__card-container" ng-if="!vm.notFound">
+
                         <p>Resultados en {{vm.placeHolderText}}</p>
+
                         <div ng-if="vm.placeHolderText === 'bandas'" ng-repeat="banda in vm.listaResultados">
-                            <img data-ng-src="{{'data:' + banda.fotoContentType + ';base64,' + banda.foto}}" alt="Foto">
                             <strong class="text-uppercase">{{banda.nombre}}</strong>
-                            <p>{{banda.datacreacion}}</p>
+                            <img data-ng-src="{{'data:' + banda.fotoContentType + ';base64,' + banda.foto}}" alt="Foto">
                         </div>
+
                         <div ng-if="vm.placeHolderText === 'albumes'" ng-repeat="album in vm.listaResultados">
-                            <img src="" alt="Foto">
+
                             <strong class="text-uppercase">{{album.nombre}}</strong>
+                            <!--<img data-ng-src="{{'data:' + album.fotoContentType + ';base64,' + album.foto}}" alt="Foto">-->
                             <p>Número de canciones: {{album.numCanciones}}</p>
-                            <p>Discográfica: {{album.discografica.nombre}}</p>
                         </div>
+
                         <div ng-if="vm.placeHolderText === 'canciones'" ng-repeat="cancion in vm.listaResultados">
                             <strong class="text-uppercase">{{cancion.nombre}}</strong>
                             <p>Duración: {{cancion.duracion}} minutos</p>
                             <p>Album: {{cancion.album.nombre}}</p>
-                            <img src="" alt="Foto">
+                            <!--<img src="" alt="Foto">-->
                         </div>
                     </div>
                 </div>

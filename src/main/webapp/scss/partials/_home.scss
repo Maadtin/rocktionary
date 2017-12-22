@@ -8,8 +8,30 @@
 
     &__card-container {
         > div {
-            display: flex;
-            align-items: flex-start;
+            padding: 1em;
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+
+            strong {
+                font-size: 16px;
+                width: 100%;
+                border-bottom: thin solid rgba(#eee, 0.3);
+                background-color: rgba($secondary, 0.6);
+                display: block;
+                padding: .3em;
+                border-radius: 3px;
+                transition: all ease-in 0.2s;
+                margin-bottom: 15px;
+                &:hover {
+                    background-color: lighten($secondary, 5);
+                }
+            }
+            img {
+                display: block;
+                width: 100px;
+                margin: 20px auto;
+            }
         }
 
         p {
@@ -92,8 +114,13 @@
 
     }
 
+    .notFoundMsg {
+        margin-bottom: 0;
+        padding: .5em;
+    }
+
     &__search-results {
-        background-color: $secondary;
+        background-color: #2a2a2a;
         color: #fff;
         padding: 1em;
         text-align: center;
