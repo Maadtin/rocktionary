@@ -34,38 +34,29 @@
 
             recognition.continuous = true;
             recognition.interimResults = true;
-;
             recognition.lang = 'es-ES';
 
             if (vm.isListening) {
                 recognition.stop()
                 return;
             }
-
-
-
             recognition.start()
 
         }
 
         recognition.addEventListener('result', function (e) {
 
-            let msg = Array.from(e.results).map(list => list[0]).map(list => list.transcript).join('');
-
-            vm.inputSearch = msg;
+            vm.inputSearch = [...e.results].map(list => list[0]).map(list => list.transcript).join('');
 
             if (e.results[0].isFinal) {
                 vm.handleOnInputChange()
                 vm.isListening && recognition.stop()
-                $scope.apply()
             }
 
             $scope.$apply()
         });
 
         //recognition.addEventListener('end', recognition.start);
-
-
 
         vm.onEnterKey = $event => {
 
@@ -112,6 +103,7 @@
 
         vm.handleOnInputChange = function () {
             vm.showResults = !!vm.inputSearch;
+            vm.showResults ? angular.element('#book').addClass('open') : angular.element('#book').removeClass('open')
             if (vm.inputSearch) {
 
                 let endPoint = `http://localhost:8080/api/get-${vm.placeHolderText}-by-nombre`;

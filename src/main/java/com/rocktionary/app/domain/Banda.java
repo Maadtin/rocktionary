@@ -8,10 +8,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
-// cambio en mi propia rama
-// generaremos conflicto entre las ramas
-//jjhkgkj
-// conflicto bueno :)
+
 /**
  * A Banda.
  */
