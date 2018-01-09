@@ -1,39 +1,40 @@
-<div class="row home">
-    <div class="home__logo-container col-xs-10 col-xs-offset-1">
-        <!--<img class="home__logo" src="/content/images/libro-cerrado.png" alt="">-->
-        <figure class='book' id="book">
-            <ul class='hardcover_front'>
-                <li>
-                    <div class="coverDesign blue">
-                    </div>
-                </li>
-                <li></li>
-            </ul>
-            <ul class='page'>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-            <ul class='hardcover_back'>
-                <li></li>
-                <li></li>
-            </ul>
-            <ul class='book_spine'>
-                <li></li>
-                <li></li>
-            </ul>
-        </figure>
-    </div>
-    <form class="col-xs-10 col-xs-offset-1">
-        <p class="home__cta subtitle">Buscar</p>
-        <div class="col-xs-12 col-sm-6 col-sm-offset-3 home__labels">
-            <span ng-click="vm.handleClassChange('canciones', $event); vm.handleOnInputChange()">Canciones</span>
-            <span ng-click="vm.handleClassChange('albumes', $event); vm.handleOnInputChange()" class="active">Albumes</span>
-            <span ng-click="vm.handleClassChange('bandas', $event); vm.handleOnInputChange()">Bandas</span>
+<div class="container">
+    <div class="row home">
+        <div class="home__logo-container col-xs-10 col-xs-offset-1">
+            <!--<img class="home__logo" src="/content/images/libro-cerrado.png" alt="">-->
+            <figure class='book' id="book">
+                <ul class='hardcover_front'>
+                    <li>
+                        <div class="coverDesign blue">
+                        </div>
+                    </li>
+                    <li></li>
+                </ul>
+                <ul class='page'>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <ul class='hardcover_back'>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <ul class='book_spine'>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </figure>
         </div>
+        <form class="col-xs-10 col-xs-offset-1">
+            <p class="home__cta subtitle">Buscar</p>
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 home__labels">
+                <span id="canciones" ng-click="vm.handleClassChange('canciones', $event); vm.handleOnInputChange()">Canciones</span>
+                <span id="albumes" ng-click="vm.handleClassChange('albumes', $event); vm.handleOnInputChange()" class="active">Albumes</span>
+                <span id="bandas" ng-click="vm.handleClassChange('bandas', $event); vm.handleOnInputChange()">Bandas</span>
+            </div>
 
-        <div class="form-group col-xs-12 col-sm-6 col-sm-offset-3 home__search-container">
+            <div class="px-0 form-group col-xs-12 col-sm-6 col-sm-offset-3 home__search-container">
                 <input autocomplete="off"
                        ng-keyup="vm.onEnterKey($event)"
                        ng-change="vm.handleOnInputChange() "
@@ -43,40 +44,44 @@
                        name="search"
                        placeholder="Buscar {{vm.placeHolderText}}..."
                        class="form-control home__input-search">
-            <i class="fa {{vm.isListening ? 'fa-microphone isListening' : 'fa-microphone-slash'}}" ng-click="vm.triggerMic()" aria-hidden="true"></i>
-        </div>
-        <div class="form-group col-xs-12 col-sm-6 col-sm-offset-3">
-            <div ng-class="{'is-visible': vm.showResults}" class="home__search-results">
-                <img ng-if="vm.isLoading" class="home__loader" src="/content/images/loader.gif" alt="">
-                <div ng-if="!vm.isLoading">
-                    <p class="notFoundMsg" ng-if="vm.notFound">{{vm.notFoundMsg}}</p>
-                    <div class="home__card-container" ng-if="!vm.notFound">
+                <i class="fa {{vm.isListening ? 'fa-microphone isListening' : 'fa-microphone-slash'}}" ng-click="vm.triggerMic()" aria-hidden="true"></i>
+            </div>
+            <div class="px-0 form-group col-xs-12 col-sm-6 col-sm-offset-3">
+                <div ng-class="{'is-visible': vm.showResults}" class="home__search-results">
+                    <div ng-if="vm.isLoading" class="home__loader ball-clip-rotate">
+                        <div></div>
+                    </div>
+                    <div ng-if="!vm.isLoading">
+                        <p class="notFoundMsg" ng-if="vm.notFound">{{vm.notFoundMsg}}</p>
+                        <div class="home__card-container" ng-if="!vm.notFound">
 
-                        <p>Resultados en {{vm.placeHolderText}}</p>
+                            <p>Resultados en {{vm.placeHolderText}}</p>
 
-                        <div ng-if="vm.placeHolderText === 'bandas'" ng-repeat="banda in vm.listaResultados">
-                            <strong class="text-uppercase">{{banda.nombre}}</strong>
-                            <img data-ng-src="{{'data:' + banda.fotoContentType + ';base64,' + banda.foto}}" alt="Foto">
-                        </div>
+                            <a ui-sref="banda-detail({id: banda.id})" ng-if="vm.placeHolderText === 'bandas'" ng-repeat="banda in vm.listaResultados">
+                                <strong class="text-uppercase">{{banda.nombre}}</strong>
+                                <img data-ng-src="{{'data:' + banda.fotoContentType + ';base64,' + banda.foto}}" alt="Foto">
+                            </a>
 
-                        <div ng-if="vm.placeHolderText === 'albumes'" ng-repeat="album in vm.listaResultados">
+                            <a ui-sref="album-detail({id: album.id})" ng-if="vm.placeHolderText === 'albumes'" ng-repeat="album in vm.listaResultados">
 
-                            <strong class="text-uppercase">{{album.nombre}}</strong>
-                            <!--<img data-ng-src="{{'data:' + album.fotoContentType + ';base64,' + album.foto}}" alt="Foto">-->
-                            <p>Número de canciones: {{album.numCanciones}}</p>
-                        </div>
+                                <strong class="text-uppercase">{{album.nombre}}</strong>
+                                <!--<img data-ng-src="{{'data:' + album.fotoContentType + ';base64,' + album.foto}}" alt="Foto">-->
+                                <p>Número de canciones: {{album.numCanciones}}</p>
+                            </a>
 
-                        <div ng-if="vm.placeHolderText === 'canciones'" ng-repeat="cancion in vm.listaResultados">
-                            <strong class="text-uppercase">{{cancion.nombre}}</strong>
-                            <p>Duración: {{cancion.duracion}} minutos</p>
-                            <p>Album: {{cancion.album.nombre}}</p>
-                            <!--<img src="" alt="Foto">-->
+                            <a ui-sref="cancion-detail({id: cancion.id})" ng-if="vm.placeHolderText === 'canciones'" ng-repeat="cancion in vm.listaResultados">
+                                <strong class="text-uppercase">{{cancion.nombre}}</strong>
+                                <p>Duración: {{cancion.duracion}} minutos</p>
+                                <p>Album: {{cancion.album.nombre}}</p>
+                                <!--<img src="" alt="Foto">-->
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-    </form>
+        </form>
+    </div>
+
 </div>

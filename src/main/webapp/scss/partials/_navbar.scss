@@ -1,5 +1,19 @@
-// estilos barra de navegación
+ // estilos barra de navegación
+.main-nav {
 
+
+    &__toggle {
+        transition: all ease-in 0.2s;
+        span {
+            background-color: #fff !important;
+            height: 1px !important;
+        }
+    }
+}
+
+.banda-margin {
+    margin-bottom: 0;
+}
 
 .menu {
 

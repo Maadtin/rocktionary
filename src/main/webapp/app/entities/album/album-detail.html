@@ -1,47 +1,88 @@
+<div class="album-detail">
+    <div class="col-xs-12 album-detail__cover">
+        <div class="blurred-container">
+            <div class="blurred" ng-style="{'background-image':'url(data:'+vm.album.fotoContentType+';base64,'+vm.album.foto+')'}">
+            </div>
+            <!--<img data-ng-src="{{'data:' + vm.album.fotoContentType + ';base64,' + vm.album.foto}}" alt="Imagen de album"/>-->
+        </div>
+        <div class="container container-mid">
+            <div class="album-detail__picture-container">
+                <img data-ng-src="{{'data:' + vm.album.fotoContentType + ';base64,' + vm.album.foto}}"  alt="Imagen de album"/>
+            </div>
+            <div class="album-detail__stats">
+                <a class="active" ng-click="vm.triggerClass($event)" href="">General</a>
+                <a ng-click="vm.triggerClass($event)" href="">Seguidores</a>
+                <a ng-click="vm.triggerClass($event)" href="">Comentarios</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 album-detail__resumen">
+        <div class="container">
+            <div class="div-50 tabs">
+                <div ng-if="vm.showGeneral" class="general">
+                    <span class="resumen-label">INFORMACIÓN GENERAL</span>
+                    <p>{{vm.album.localizacion}}</p>
+                </div>
+                <div ng-if="vm.showSeguidores" class="seguidores">
+                    <span class="resumen-label">SEGUIDORES</span>
+                    <p>{{vm.album.localizacion}}</p>
+                </div>
+                <div ng-if="vm.showComentarios" class="comentarios">
+                    <span class="resumen-label">COMENTARIOS</span>
+                    <form ng-submit="vm.addComment()" name="addComentForm" class="commentarios__form">
+                        <textarea name="comment" ng-model="vm.commentText" placeholder="Deja tú comentario..." required></textarea>
+                        <button ng-disabled="addComentForm.$invalid" type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="div-50 more-info">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dicta molestias necessitatibus ratione. Alias dolores dolorum eaque error eum ex explicabo fuga, modi nisi quod repellendus veritatis, voluptates? Aliquam aliquid, error exercitationem hic illo ipsum nisi possimus quaerat qui quia rerum soluta tempore, vero! Culpa laboriosam odio repellat tenetur totam?</p>
+            </div>
+        </div>
+    </div>
+<!--<div>-->
+    <!--<h2><span data-translate="rocktionaryApp.album.detail.title">Album</span> {{vm.album.id}}</h2>-->
+    <!--<hr>-->
+    <!--<jhi-alert-error></jhi-alert-error>-->
+    <!--<dl class="dl-horizontal jh-entity-details">-->
+        <!--<dt><span data-translate="rocktionaryApp.album.genero">Genero</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.album.genero}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="rocktionaryApp.album.nombre">Nombre</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.album.nombre}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="rocktionaryApp.album.numCanciones">Num Canciones</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.album.numCanciones}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="rocktionaryApp.album.formato">Formato</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.album.formato}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="rocktionaryApp.album.numCopias">Num Copias</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.album.numCopias}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="rocktionaryApp.album.reviews">Reviews</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.album.reviews}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="rocktionaryApp.album.discografica">Discografica</span></dt>-->
+        <!--<dd>-->
+            <!--<a ui-sref="discografica-detail({id:vm.album.discografica.id})">{{vm.album.discografica.nombre}}</a>-->
+        <!--</dd>-->
+    <!--</dl>-->
 
-<div>
-    <h2><span data-translate="rocktionaryApp.album.detail.title">Album</span> {{vm.album.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="rocktionaryApp.album.genero">Genero</span></dt>
-        <dd>
-            <span>{{vm.album.genero}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.album.nombre">Nombre</span></dt>
-        <dd>
-            <span>{{vm.album.nombre}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.album.numCanciones">Num Canciones</span></dt>
-        <dd>
-            <span>{{vm.album.numCanciones}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.album.formato">Formato</span></dt>
-        <dd>
-            <span>{{vm.album.formato}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.album.numCopias">Num Copias</span></dt>
-        <dd>
-            <span>{{vm.album.numCopias}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.album.reviews">Reviews</span></dt>
-        <dd>
-            <span>{{vm.album.reviews}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.album.discografica">Discografica</span></dt>
-        <dd>
-            <a ui-sref="discografica-detail({id:vm.album.discografica.id})">{{vm.album.discografica.nombre}}</a>
-        </dd>
-    </dl>
+    <!--<button type="submit"-->
+            <!--ui-sref="{{ vm.previousState }}"-->
+            <!--class="btn btn-info">-->
+        <!--<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>-->
+    <!--</button>-->
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button" ui-sref="album-detail.edit({id:vm.album.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
-    </button>
-</div>
+    <!--<button type="button" ui-sref="album-detail.edit({id:vm.album.id})" class="btn btn-primary">-->
+        <!--<span class="glyphicon glyphicon-pencil"></span>-->
+        <!--<span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>-->
+    <!--</button>-->
+<!--</div>-->

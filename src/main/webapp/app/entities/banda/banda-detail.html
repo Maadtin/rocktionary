@@ -1,83 +1,125 @@
-
-<div>
-    <h2><span data-translate="rocktionaryApp.banda.detail.title">Banda</span> {{vm.banda.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="rocktionaryApp.banda.nombre">Nombre</span></dt>
-        <dd>
-            <span>{{vm.banda.nombre}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.localizacion">Localizacion</span></dt>
-        <dd>
-            <span>{{vm.banda.localizacion}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.datacreacion">Datacreacion</span></dt>
-        <dd>
-            <span>{{vm.banda.datacreacion | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.anosactivo">Anosactivo</span></dt>
-        <dd>
-            <span>{{vm.banda.anosactivo | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.temas">Temas</span></dt>
-        <dd>
-            <span>{{vm.banda.temas}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.discografica">Discografica</span></dt>
-        <dd>
-            <span>{{vm.banda.discografica}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.foto">Foto</span></dt>
-        <dd>
-            <div ng-if="vm.banda.foto">
-                <a ng-click="vm.openFile(vm.banda.fotoContentType, vm.banda.foto)">
-                    <img data-ng-src="{{'data:' + vm.banda.fotoContentType + ';base64,' + vm.banda.foto}}" style="max-width: 100%;" alt="banda image"/>
-                </a>
-                {{vm.banda.fotoContentType}}, {{vm.byteSize(vm.banda.foto)}}
+<div class="banda-detail">
+    <div class="col-xs-12 banda-detail__cover">
+        <div class="blurred-container">
+            <div class="blurred" ng-style="{'background-image':'url(data:'+vm.banda.fotoContentType+';base64,'+vm.banda.foto+')'}">
             </div>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.logo">Logo</span></dt>
-        <dd>
-            <div ng-if="vm.banda.logo">
-                <a ng-click="vm.openFile(vm.banda.logoContentType, vm.banda.logo)">
-                    <img data-ng-src="{{'data:' + vm.banda.logoContentType + ';base64,' + vm.banda.logo}}" style="max-width: 100%;" alt="banda image"/>
-                </a>
-                {{vm.banda.logoContentType}}, {{vm.byteSize(vm.banda.logo)}}
+            <!--<img data-ng-src="{{'data:' + vm.banda.fotoContentType + ';base64,' + vm.banda.foto}}" alt="Imagen de banda"/>-->
+        </div>
+        <div class="container container-mid">
+            <div class="banda-detail__picture-container">
+                <img data-ng-src="{{'data:' + vm.banda.fotoContentType + ';base64,' + vm.banda.foto}}"  alt="Imagen de banda"/>
             </div>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.pais">Pais</span></dt>
-        <dd>
-            <span>{{vm.banda.pais}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.estado">Estado</span></dt>
-        <dd>
-            <span>{{vm.banda.estado}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.genero">Genero</span></dt>
-        <dd>
-            <span>{{vm.banda.genero}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.biografia">Biografia</span></dt>
-        <dd>
-            <span>{{vm.banda.biografia}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.banda.discografica">Discografica</span></dt>
-        <dd>
-            <span ng-repeat="discografica in vm.banda.discograficas">
-                <a ui-sref="discografica-detail({id: discografica.id})">{{discografica.nombre}}</a>{{$last ? '' : ', '}}
-            </span>
-        </dd>
-    </dl>
+            <div class="banda-detail__stats">
+                <a class="active" ng-click="vm.triggerClass($event)" href="">General</a>
+                <a ng-click="vm.triggerClass($event)" href="">Seguidores</a>
+                <a ng-click="vm.triggerClass($event)" href="">Comentarios</a>
+            </div>
+        </div>
+    </div>
+        <div class="col-xs-12 banda-detail__resumen">
+            <div class="container">
+                <div class="div-50 tabs">
+                    <div ng-if="vm.showGeneral" class="general">
+                        <span class="resumen-label">INFORMACIÓN GENERAL</span>
+                        <p>{{vm.banda.localizacion}}</p>
+                    </div>
+                    <div ng-if="vm.showSeguidores" class="seguidores">
+                        <span class="resumen-label">SEGUIDORES</span>
+                        <p>{{vm.banda.localizacion}}</p>
+                    </div>
+                    <div ng-if="vm.showComentarios" class="comentarios">
+                        <span class="resumen-label">COMENTARIOS</span>
+                        <form ng-submit="vm.addComment()" name="addComentForm" class="commentarios__form">
+                            <textarea name="comment" ng-model="vm.commentText" placeholder="Deja tú comentario..." required></textarea>
+                            <button ng-disabled="addComentForm.$invalid" type="submit">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="div-50 more-info">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dicta molestias necessitatibus ratione. Alias dolores dolorum eaque error eum ex explicabo fuga, modi nisi quod repellendus veritatis, voluptates? Aliquam aliquid, error exercitationem hic illo ipsum nisi possimus quaerat qui quia rerum soluta tempore, vero! Culpa laboriosam odio repellat tenetur totam?</p>
+                </div>
+            </div>
+        </div>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
+    <!--<div>-->
+    <!--<h2><span data-translate="rocktionaryApp.banda.detail.title">Banda</span> {{vm.banda.id}}</h2>-->
+    <!--<hr>-->
+    <!--<jhi-alert-error></jhi-alert-error>-->
+    <!--<dl class="dl-horizontal jh-entity-details">-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.nombre">Nombre</span></dt>-->
+    <!--<dd>-->
+    <!--<span>{{vm.banda.nombre}}</span>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.localizacion">Localizacion</span></dt>-->
+    <!--<dd>-->
+    <!--<span>{{vm.banda.localizacion}}</span>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.datacreacion">Datacreacion</span></dt>-->
+    <!--<dd>-->
+    <!--<span>{{vm.banda.datacreacion | date:'mediumDate'}}</span>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.anosactivo">Anosactivo</span></dt>-->
+    <!--<dd>-->
+    <!--<span>{{vm.banda.anosactivo | date:'mediumDate'}}</span>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.temas">Temas</span></dt>-->
+    <!--<dd>-->
+    <!--<span>{{vm.banda.temas}}</span>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.discografica">Discografica</span></dt>-->
+    <!--<dd>-->
+    <!--<span>{{vm.banda.discografica}}</span>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.foto">Foto</span></dt>-->
+    <!--<dd>-->
+    <!--<div ng-if="vm.banda.foto">-->
+    <!--<a ng-click="vm.openFile(vm.banda.fotoContentType, vm.banda.foto)">-->
+    <!--<img data-ng-src="{{'data:' + vm.banda.fotoContentType + ';base64,' + vm.banda.foto}}" style="max-width: 100%;" alt="banda image"/>-->
+    <!--</a>-->
+    <!--{{vm.banda.fotoContentType}}, {{vm.byteSize(vm.banda.foto)}}-->
+    <!--</div>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.logo">Logo</span></dt>-->
+    <!--<dd>-->
+    <!--<div ng-if="vm.banda.logo">-->
+    <!--<a ng-click="vm.openFile(vm.banda.logoContentType, vm.banda.logo)">-->
+    <!--<img data-ng-src="{{'data:' + vm.banda.logoContentType + ';base64,' + vm.banda.logo}}" style="max-width: 100%;" alt="banda image"/>-->
+    <!--</a>-->
+    <!--{{vm.banda.logoContentType}}, {{vm.byteSize(vm.banda.logo)}}-->
+    <!--</div>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.pais">Pais</span></dt>-->
+    <!--<dd>-->
+    <!--<span>{{vm.banda.pais}}</span>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.estado">Estado</span></dt>-->
+    <!--<dd>-->
+    <!--<span>{{vm.banda.estado}}</span>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.genero">Genero</span></dt>-->
+    <!--<dd>-->
+    <!--<span>{{vm.banda.genero}}</span>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.biografia">Biografia</span></dt>-->
+    <!--<dd>-->
+    <!--<span>{{vm.banda.biografia}}</span>-->
+    <!--</dd>-->
+    <!--<dt><span data-translate="rocktionaryApp.banda.discografica">Discografica</span></dt>-->
+    <!--<dd>-->
+    <!--<span ng-repeat="discografica in vm.banda.discograficas">-->
+    <!--<a ui-sref="discografica-detail({id: discografica.id})">{{discografica.nombre}}</a>{{$last ? '' : ', '}}-->
+    <!--</span>-->
+    <!--</dd>-->
+    <!--</dl>-->
 
-    <button type="button" ui-sref="banda-detail.edit({id:vm.banda.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
-    </button>
-</div>
+    <!--<button type="submit"-->
+    <!--ui-sref="{{ vm.previousState }}"-->
+    <!--class="btn btn-info">-->
+    <!--<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>-->
+    <!--</button>-->
+
+    <!--<button type="button" ui-sref="banda-detail.edit({id:vm.banda.id})" class="btn btn-primary">-->
+    <!--<span class="glyphicon glyphicon-pencil"></span>-->
+    <!--<span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>-->
+    <!--</button>-->
+    <!--</div>-->

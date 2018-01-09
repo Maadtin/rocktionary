@@ -50,6 +50,9 @@
                     $translatePartialLoader.addPart('banda');
                     return $translate.refresh();
                 }],
+                // comments: ['$stateParams', 'ComentarBanda', function ($stateParams, ComentarBanda) {
+                //     return ComentarBanda.query({id: $stateParams.id}).$promise;
+                // }],
                 entity: ['$stateParams', 'Banda', function($stateParams, Banda) {
                     return Banda.get({id : $stateParams.id}).$promise;
                 }],

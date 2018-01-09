@@ -1,35 +1,76 @@
+<div class="cancion-detail">
+    <div class="col-xs-12 cancion-detail__cover">
+        <div class="blurred-container">
+            <div class="blurred" ng-style="{'background-image':'url(data:'+vm.cancion.fotoContentType+';base64,'+vm.cancion.foto+')'}">
+            </div>
+            <!--<img data-ng-src="{{'data:' + vm.cancion.fotoContentType + ';base64,' + vm.cancion.foto}}" alt="Imagen de cancion"/>-->
+        </div>
+        <div class="container container-mid">
+            <div class="cancion-detail__picture-container">
+                <img data-ng-src="{{'data:' + vm.cancion.fotoContentType + ';base64,' + vm.cancion.foto}}"  alt="Imagen de cancion"/>
+            </div>
+            <div class="cancion-detail__stats">
+                <a class="active" ng-click="vm.triggerClass($event)" href="">General</a>
+                <a ng-click="vm.triggerClass($event)" href="">Seguidores</a>
+                <a ng-click="vm.triggerClass($event)" href="">Comentarios</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 cancion-detail__resumen">
+        <div class="container">
+            <div class="div-50 tabs">
+                <div ng-if="vm.showGeneral" class="general">
+                    <span class="resumen-label">INFORMACIÓN GENERAL</span>
+                    <p>{{vm.cancion.localizacion}}</p>
+                </div>
+                <div ng-if="vm.showSeguidores" class="seguidores">
+                    <span class="resumen-label">SEGUIDORES</span>
+                    <p>{{vm.cancion.localizacion}}</p>
+                </div>
+                <div ng-if="vm.showComentarios" class="comentarios">
+                    <span class="resumen-label">COMENTARIOS</span>
+                    <form ng-submit="vm.addComment()" name="addComentForm" class="commentarios__form">
+                        <textarea name="comment" ng-model="vm.commentText" placeholder="Deja tú comentario..." required></textarea>
+                        <button ng-disabled="addComentForm.$invalid" type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="div-50 more-info">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dicta molestias necessitatibus ratione. Alias dolores dolorum eaque error eum ex explicabo fuga, modi nisi quod repellendus veritatis, voluptates? Aliquam aliquid, error exercitationem hic illo ipsum nisi possimus quaerat qui quia rerum soluta tempore, vero! Culpa laboriosam odio repellat tenetur totam?</p>
+            </div>
+        </div>
+    </div>
+<!--<div>-->
+    <!--<h2><span data-translate="rocktionaryApp.cancion.detail.title">Cancion</span> {{vm.cancion.id}}</h2>-->
+    <!--<hr>-->
+    <!--<jhi-alert-error></jhi-alert-error>-->
+    <!--<dl class="dl-horizontal jh-entity-details">-->
+        <!--<dt><span data-translate="rocktionaryApp.cancion.nombre">Nombre</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.cancion.nombre}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="rocktionaryApp.cancion.duracion">Duracion</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.cancion.duracion}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="rocktionaryApp.cancion.letra">Letra</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.cancion.letra}}</span>-->
+        <!--</dd>-->
+        <!--<dt><span data-translate="rocktionaryApp.cancion.album">Album</span></dt>-->
+        <!--<dd>-->
+            <!--<a ui-sref="album-detail({id:vm.cancion.album.id})">{{vm.cancion.album.nombre}}</a>-->
+        <!--</dd>-->
+    <!--</dl>-->
 
-<div>
-    <h2><span data-translate="rocktionaryApp.cancion.detail.title">Cancion</span> {{vm.cancion.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="rocktionaryApp.cancion.nombre">Nombre</span></dt>
-        <dd>
-            <span>{{vm.cancion.nombre}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.cancion.duracion">Duracion</span></dt>
-        <dd>
-            <span>{{vm.cancion.duracion}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.cancion.letra">Letra</span></dt>
-        <dd>
-            <span>{{vm.cancion.letra}}</span>
-        </dd>
-        <dt><span data-translate="rocktionaryApp.cancion.album">Album</span></dt>
-        <dd>
-            <a ui-sref="album-detail({id:vm.cancion.album.id})">{{vm.cancion.album.nombre}}</a>
-        </dd>
-    </dl>
+    <!--<button type="submit"-->
+            <!--ui-sref="{{ vm.previousState }}"-->
+            <!--class="btn btn-info">-->
+        <!--<span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>-->
+    <!--</button>-->
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button" ui-sref="cancion-detail.edit({id:vm.cancion.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
-    </button>
-</div>
+    <!--<button type="button" ui-sref="cancion-detail.edit({id:vm.cancion.id})" class="btn btn-primary">-->
+        <!--<span class="glyphicon glyphicon-pencil"></span>-->
+        <!--<span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>-->
+    <!--</button>-->
+<!--</div>-->

@@ -11,52 +11,68 @@
 
         var vm = this;
 
-        ///
         vm.placeHolderText = 'albumes';
         let timeOut = null;
-        let recognition = new webkitSpeechRecognition();
-        vm.isListening = false;
 
-        recognition.addEventListener('start', function () {
 
-            vm.isListening = true;
+        function buscaCancionPorNombre (nombre) {
+            vm.inputSearch = nombre;
+            vm.handleOnInputChange();
             $scope.$apply()
+        }
+
+        function cambiaCategoria (cat) {
+            switch (cat) {
+                case 'canciones':angular.element('#canciones').trigger('click');break;
+                case 'albumes':angular.element('#albumes').trigger('click');break;
+                case 'bandas':angular.element('#bandas').trigger('click');break;
+            }
+        }
+
+        function limpiaResultados () {
+            vm.inputSearch = '';
+            vm.showResults = false;
+            $scope.$apply()
+        }
+
+        function adios () {
+            if (annyang.isListening()) {
+                limpiaResultados()
+                annyang.abort()
+            }
+        }
+
+        let commands = {
+            'jarvis busca *val': buscaCancionPorNombre,
+            'jarvis cambia a *cat': cambiaCategoria,
+            'jarvis limpia la búsqueda': limpiaResultados,
+            'jarvis limpia la busqueda': limpiaResultados,
+            'adiós jarvis': adios,
+            'adios jarvis': adios
+        }
+
+
+        annyang.addCallback('end', function () {
+            vm.isListening = false;
+            $scope.$apply();
         })
 
-        recognition.addEventListener('end', function () {
-
-            vm.isListening = false
+        annyang.addCallback('start', function () {
+            vm.isListening = true;
             $scope.$apply()
         })
 
 
         vm.triggerMic = () => {
-
-            recognition.continuous = true;
-            recognition.interimResults = true;
-            recognition.lang = 'es-ES';
-
-            if (vm.isListening) {
-                recognition.stop()
+            if (annyang.isListening()) {
+                annyang.abort();
                 return;
             }
-            recognition.start()
+            annyang.setLanguage('es-ES')
+            annyang.addCommands(commands)
+            annyang.start({ autoRestart: true, continuous: true })
+        };
 
-        }
-
-        recognition.addEventListener('result', function (e) {
-
-            vm.inputSearch = [...e.results].map(list => list[0]).map(list => list.transcript).join('');
-
-            if (e.results[0].isFinal) {
-                vm.handleOnInputChange()
-                vm.isListening && recognition.stop()
-            }
-
-            $scope.$apply()
-        });
-
-        //recognition.addEventListener('end', recognition.start);
 
         vm.onEnterKey = $event => {
 
@@ -103,6 +119,7 @@
 
         vm.handleOnInputChange = function () {
             vm.showResults = !!vm.inputSearch;
+            !vm.showResults && angular.element('.home__card-container').empty()
             vm.showResults ? angular.element('#book').addClass('open') : angular.element('#book').removeClass('open')
             if (vm.inputSearch) {
 

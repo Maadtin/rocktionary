@@ -116,4 +116,9 @@ public class ComentarBandaResource {
         comentarBandaRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/get-comentarios-by-banda-id/{id}")
+    public List<ComentarBanda> getComentariosByBandaId(@PathVariable Long id) {
+        return comentarBandaRepository.findComentarioByBandaId(id);
+    }
 }

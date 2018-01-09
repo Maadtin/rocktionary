@@ -1,5 +1,7 @@
 .home {
 
+    padding-bottom: 100px;
+
     &__loader {
         width: 25px;
         display: block;
@@ -7,13 +9,16 @@
     }
 
     &__card-container {
-        > div {
+        > a {
             padding: 1em;
+            display: block;
             &:not(:last-child) {
                 margin-bottom: 10px;
             }
 
             strong {
+                color: #fff;
+                text-decoration: none;
                 font-size: 16px;
                 width: 100%;
                 border-bottom: thin solid rgba(#eee, 0.3);
@@ -50,7 +55,7 @@
 
     &__labels {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         margin-bottom: 20px;
         cursor: pointer;
 
@@ -70,6 +75,10 @@
                 margin: 0 10px;
             }
 
+            &:nth-child(2) {
+                margin: 0 5px;
+            }
+
             &:hover, &.active {
                 transform: scale(1.1);
                 background-color: rgba($secondary, 0.5);
@@ -77,6 +86,11 @@
 
             &.active {
                 background-color: rgba($secondary, 1);
+            }
+
+            @media (max-width: 400px) {
+                transform: none !important;
+                font-size: 13px;
             }
         }
     }
@@ -153,7 +167,15 @@
     transition: all linear 0.2s;
     transform: translateX(-50%);
     margin-bottom: 15px;
+
+    @media (max-width: 450px) {
+        max-width: 150px;
+        height: 160px;
+    }
 }
+
+
+
 
 .book.open {
  transform: none;

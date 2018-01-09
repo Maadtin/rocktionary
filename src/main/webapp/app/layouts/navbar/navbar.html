@@ -1,7 +1,7 @@
-<nav class="navbar mynav navbar-default" role="navigation">
+<nav class="main-nav navbar mynav navbar-default" ng-class="{'banda-margin': vm.$state.includes('banda')}" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" ng-click="vm.toggleNavbar()">
+            <button type="button" class="navbar-toggle main-nav__toggle" ng-click="vm.toggleNavbar()">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>

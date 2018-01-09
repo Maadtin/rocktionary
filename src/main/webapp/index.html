@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="content/css/vendor.css">
     <!-- endbuild -->
     <!-- build:css content/css/main.css -->
+    <link rel="stylesheet" href="content/css/loaders.css">
     <link rel="stylesheet" href="content/css/main.css">
     <!-- endbuild -->
     <link rel="shortcut icon" href="favicon.ico" />
@@ -28,7 +29,6 @@
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <div ui-view="navbar" ng-cloak></div>
-    <div class="container">
 
         <div class="main-wrapper" ui-view="content">
             <!-- Angular views -->
@@ -37,7 +37,6 @@
         <div class="footer" ng-cloak>
             <!--<p data-translate="footer">This is your footer</p>-->
         </div>
-    </div>
     <noscript>
         <h1>You must enable javascript to view this page.</h1>
     </noscript>
@@ -62,6 +61,7 @@
 
     <!-- build:js app/vendor.js -->
     <!-- bower:js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/messageformat/messageformat.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>

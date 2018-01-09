@@ -8,7 +8,11 @@
 
     function ComentarBanda ($resource, DateUtils) {
         var resourceUrl =  'api/comentar-bandas/:id';
-
+        // var resourceUrl =  'api/get-comentarios-by-banda-id/:id';
+		  //
+        // return $resource(resourceUrl, {}, {
+        //   'query': { method: 'GET', isArray: true}
+        // })
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
@@ -24,4 +28,5 @@
             'update': { method:'PUT' }
         });
     }
+
 })();

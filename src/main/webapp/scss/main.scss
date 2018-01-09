@@ -3,8 +3,15 @@
 @import './commons/commons';
 @import './partials/navbar';
 
-
+//Home
 @import './partials/home';
+
+// Bandas
+@import './partials/banda-detail';
+@import './partials/album-detail';
+@import './partials/cancion-detail';
+
+// Footer
 @import './partials/footer';
 
 
