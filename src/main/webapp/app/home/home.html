@@ -37,7 +37,7 @@
             <div class="px-0 form-group col-xs-12 col-sm-6 col-sm-offset-3 home__search-container">
                 <input autocomplete="off"
                        ng-keyup="vm.onEnterKey($event)"
-                       ng-change="vm.handleOnInputChange() "
+                       ng-change="vm.handleOnInputChange()"
                        ng-model="vm.inputSearch"
                        id="input"
                        type="search"
@@ -69,11 +69,11 @@
                                 <p>Número de canciones: {{album.numCanciones}}</p>
                             </a>
 
-                            <a ui-sref="cancion-detail({id: cancion.id})" ng-if="vm.placeHolderText === 'canciones'" ng-repeat="cancion in vm.listaResultados">
-                                <strong class="text-uppercase">{{cancion.nombre}}</strong>
-                                <p>Duración: {{cancion.duracion}} minutos</p>
-                                <p>Album: {{cancion.album.nombre}}</p>
-                                <!--<img src="" alt="Foto">-->
+                            <a ui-sref="cancion-detail({id: cancion.id})" ng-if="vm.placeHolderText === 'canciones'" ng-repeat="cancion in vm.listaResultados.tracks.items">
+                                <strong class="text-uppercase">{{cancion.album.name}}</strong>
+                                <!--<p>Duración: {{cancion.duracion}} minutos</p>-->
+                                <!--<p>Album: {{cancion.album.nombre}}</p>-->
+                                <img ng-src="{{cancion.album.images[1].url}}" alt="Foto">
                             </a>
                         </div>
                     </div>

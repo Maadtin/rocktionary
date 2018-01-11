@@ -12,6 +12,7 @@
         var vm = this;
 
         vm.placeHolderText = 'albumes';
+        vm.type = 'album'
         let timeOut = null;
 
 
@@ -86,7 +87,15 @@
                 angular.element(e.target).siblings().removeClass();
                 angular.element(e.target).addClass('active')
 
+
+
             vm.placeHolderText = filter;
+
+            switch(vm.placeHolderText) {
+                case 'albumes': vm.type = 'album';  break;
+                case 'canciones': vm.type = 'track'; break;
+                case 'bandas': vm.type='artist'; break;
+            }
         }
 
         let onData = data => {
@@ -97,6 +106,7 @@
             } else {
                 vm.notFound = false;
                 vm.listaResultados = data;
+                console.log(data.tracks)
             }
         }
 
@@ -117,19 +127,22 @@
             }
         }
 
+
         vm.handleOnInputChange = function () {
             vm.showResults = !!vm.inputSearch;
             !vm.showResults && angular.element('.home__card-container').empty()
             vm.showResults ? angular.element('#book').addClass('open') : angular.element('#book').removeClass('open')
             if (vm.inputSearch) {
 
-                let endPoint = `http://localhost:8080/api/get-${vm.placeHolderText}-by-nombre`;
+
+
+                let endPoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(vm.inputSearch)}&type=${vm.type}`;
                 vm.isLoading = true;
                 clearTimeout(timeOut);
                 timeOut = setTimeout ( () => {
                     HomeService
                         .busqueda(endPoint)
-                        .query({input: vm.inputSearch})
+                        .get()
                         .$promise
                         .then(onData,onError)
                 }, 500)
@@ -146,6 +159,14 @@
         });
 
         getAccount();
+
+        // vm.getSpotifyTrack = function () {
+        //     HomeService
+        //         .getSpotifyTrack(vm.inputSearch)
+        //         .get()
+        //         .$promise
+        //         .then(res => console.log(res))
+        // }
 
         function getAccount() {
             Principal.identity().then(function(account) {
