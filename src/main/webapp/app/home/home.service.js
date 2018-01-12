@@ -3,14 +3,32 @@ angular
     .service('HomeService', HomeService)
 
 
-HomeService.$inject = ['$resource', '$localStorage', '$sessionStorage'];
+HomeService.$inject = ['$resource', '$localStorage', '$sessionStorage', '$http'];
 
-function HomeService ($resource, $localStorage, $sessionStorage) {
+function HomeService ($resource, $localStorage, $sessionStorage, $http) {
+
+    // this.getToken = function () {
+    //     return $http({
+    //         method: 'POST',
+    //         url: 'https://accounts.spotify.com/api/token',
+    //         headers: {
+    //             'Authorization': 'Basic ODk2NzZmNGUxNDQ3NDU4NGE4MWE4YzI4MDgwMWVlNzc6MDcxOTEwYmVhODA1NDk2N2JmNzY1NmQyYTA1YmJkNTY=',
+    //             'Content-Type': 'application/x-www-form-urlencoded'
+    //         },
+    //         transformRequest: function(obj) {
+    //             var str = [];
+    //             for(var p in obj)
+    //                 str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    //             return str.join("&");
+    //         },
+    //         data: {grant_type: "client_credentials"}
+    //     })
+    // }
 
 
     this.busqueda = function (url) {
         //var token = $localStorage.authenticationToken || $sessionStorage.authenticationToken;
-        var headers = {'Authorization': 'Bearer BQCFFDX1mIE9ZC0wgHcAXmMthsWroHwKSIy-Qket-Nl0f6OadtOWiUNtDCH83mtM0y0Vny8ROk4xsPCISa8'}
+        var headers = {'Authorization': 'Bearer BQDUSL5eb7eBEeywxvTTYy6WdO6w1HbJvFc-Xe3GSwxpIbk5rhGoSEoeih1CyFCfI4RcXkRI77UlzSmCj6A'}
         return $resource(url, null, {
             query: {
                 method: 'GET',

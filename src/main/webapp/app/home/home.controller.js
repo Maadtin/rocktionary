@@ -16,6 +16,9 @@
         let timeOut = null;
 
 
+        // HomeService.getToken().then(res => console.log(res))
+
+
         function buscaCancionPorNombre (nombre) {
             vm.inputSearch = nombre;
             vm.handleOnInputChange();
@@ -106,8 +109,14 @@
             } else {
                 vm.notFound = false;
                 vm.listaResultados = data;
-                console.log(data.tracks)
+                console.log(data)
             }
+        }
+
+        vm.parseMillis = function(millis) {
+            var minutes = Math.floor(millis / 60000);
+            var seconds = ((millis % 60000) / 1000).toFixed(0);
+            return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
         }
 
         let onError = err => {
