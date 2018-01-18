@@ -115,6 +115,20 @@
             }
         }
 
+        .followers {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .artist-spotify-profile {
+            color: #fff;
+        }
+
+        .artist-name {
+            margin-top: 0;
+        }
+
         .div-50 {
             @media (min-width: 1000px) {
                 width: 49%;
@@ -141,6 +155,57 @@
                 order: 1;
             }
         }
+    }
+
+}
+
+.top-tracks-container {
+
+    h3 {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    text-align: center;
+
+    ul.grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @media (min-width: 600px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        grid-gap: 5px;
+        li {
+            margin-bottom: 15px;
+            border: thin solid rgba(#fff, .4);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+
+    h5 {
+        color: #fff;
+        padding: .5em .8em;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .img-audio-container {
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    img, audio {
+        width: 100%
+    }
+
+    img {
+        height: 100%;
+        object-fit: cover;
     }
 
 }

@@ -11,8 +11,7 @@
         var vm = this;
 
         vm.banda = entity;
-        //vm.comments = comments[0];
-        console.log(this);
+        //vm.comments = comments[0]
         vm.previousState = previousState.name;
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
@@ -20,6 +19,7 @@
         var unsubscribe = $rootScope.$on('rocktionaryApp:bandaUpdate', function(event, result) {
             vm.banda = result;
         });
+
         $scope.$on('$destroy', unsubscribe);
 
 

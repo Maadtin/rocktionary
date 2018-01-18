@@ -5,18 +5,28 @@
         .module('rocktionaryApp')
         .controller('BandaController', BandaController);
 
-    BandaController.$inject = ['DataUtils', 'banda'];
+    BandaController.$inject = ['DataUtils', 'banda', 'topTracks', '$sce', 'ngDialog'];
 
-    function BandaController(DataUtils, banda) {
+    function BandaController(DataUtils, banda, topTracks, $sce, ngDialog) {
 
+        let vm = this;
 
-        var vm = this;
+        vm.validateURL = function (url) {
+            return $sce.trustAsResourceUrl(url);
+        }
+
+        vm.openLightBox = function () {
+            ngDialog.open({})
+        }
+
+        vm.banda = banda;
+        vm.topTracks = topTracks;
+        console.log(topTracks)
         //
         // vm.bandas = [];
         // vm.openFile = DataUtils.openFile;
         // vm.byteSize = DataUtils.byteSize;
         //
-        vm.banda = banda;
         //
         // loadAll();
         //

@@ -1,17 +1,43 @@
+<div class="loader" ng-if="vm.isLoading">
+    <div class="triangle-wrapper">
+        <div class="triangle triangle-1"></div>
+        <div class="triangle triangle-2"></div>
+        <div class="triangle triangle-3"></div>
+        <div class="triangle triangle-4"></div>
+        <div class="triangle triangle-5"></div>
+        <p class="triangle-loading">Loading</p>
+    </div>
+</div>
+
+<script>
+    (() => {
+        const $triangles = document.querySelectorAll('.triangle')
+        const template = `<svg class="triangle-svg" viewBox="0 0 140 141">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <polygon class="triangle-polygon"  points="70 6 136 138 4 138"></polygon>
+    </g>
+  </svg>`;
+
+        Array.prototype.forEach.call($triangles, ($triangle, index) => {
+            $triangle.innerHTML = template
+        })
+    })()
+</script>
+
 <div class="banda-detail">
     <div class="col-xs-12 banda-detail__cover">
         <div class="blurred-container">
-            <div class="blurred" ng-style="{'background-image':'url(data:'+vm.banda.fotoContentType+';base64,'+vm.banda.foto+')'}">
+            <div class="blurred" ng-style="{'background-image':'url('+vm.banda.images[0].url+')'}">
             </div>
             <!--<img data-ng-src="{{'data:' + vm.banda.fotoContentType + ';base64,' + vm.banda.foto}}" alt="Imagen de banda"/>-->
         </div>
         <div class="container container-mid">
             <div class="banda-detail__picture-container">
-                <img data-ng-src="{{'data:' + vm.banda.fotoContentType + ';base64,' + vm.banda.foto}}"  alt="Imagen de banda"/>
+                <img data-ng-src="{{vm.banda.images[0].url}}"  alt="Imagen de banda"/>
             </div>
             <div class="banda-detail__stats">
                 <a class="active" ng-click="vm.triggerClass($event)" href="">General</a>
-                <a ng-click="vm.triggerClass($event)" href="">Seguidores</a>
+                <!--<a ng-click="vm.triggerClass($event)" href="">Seguidores {{vm.banda.followers.total}}</a>-->
                 <a ng-click="vm.triggerClass($event)" href="">Comentarios</a>
             </div>
         </div>
@@ -19,23 +45,41 @@
         <div class="col-xs-12 banda-detail__resumen">
             <div class="container">
                 <div class="div-50 tabs">
-                    <div ng-if="vm.showGeneral" class="general">
-                        <span class="resumen-label">INFORMACIÓN GENERAL</span>
-                        <p>{{vm.banda.localizacion}}</p>
-                    </div>
-                    <div ng-if="vm.showSeguidores" class="seguidores">
-                        <span class="resumen-label">SEGUIDORES</span>
-                        <p>{{vm.banda.localizacion}}</p>
-                    </div>
-                    <div ng-if="vm.showComentarios" class="comentarios">
-                        <span class="resumen-label">COMENTARIOS</span>
-                        <form ng-submit="vm.addComment()" name="addComentForm" class="commentarios__form">
-                            <textarea name="comment" ng-model="vm.commentText" placeholder="Deja tú comentario..." required></textarea>
-                            <button ng-disabled="addComentForm.$invalid" type="submit">Enviar</button>
-                        </form>
-                    </div>
+                    <section class="top-tracks-container">
+                        <h3>Top canciones de {{vm.banda.name}}</h3>
+                        <ul class="grid">
+                            <li ng-repeat="track in vm.topTracks.tracks" >
+                                <h5>{{track.name}}</h5>
+                                <div class="img-audio-container">
+                                    <img ng-click="vm.openLightBox()" ng-src="{{track.album.images[1].url}}" alt="Imagen del album {{track.album.name}}">
+                                    <audio controls>
+                                        <source ng-src="{{vm.validateURL(track.preview_url)}}">
+                                    </audio>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    <!--<div ng-if="vm.showGeneral" class="general">-->
+                        <!--<span class="resumen-label">INFORMACIÓN GENERAL</span>-->
+                        <!--<p>{{vm.banda.localizacion}}</p>-->
+                    <!--</div>-->
+                    <!--<div ng-if="vm.showSeguidores" class="seguidores">-->
+                        <!--<span class="resumen-label">SEGUIDORES</span>-->
+                        <!--<p>{{vm.banda.localizacion}}</p>-->
+                    <!--</div>-->
+                    <!--<div ng-if="vm.showComentarios" class="comentarios">-->
+                        <!--<span class="resumen-label">COMENTARIOS</span>-->
+                        <!--<form ng-submit="vm.addComment()" name="addComentForm" class="commentarios__form">-->
+                            <!--<textarea name="comment" ng-model="vm.commentText" placeholder="Deja tú comentario..." required></textarea>-->
+                            <!--<button ng-disabled="addComentForm.$invalid" type="submit">Enviar</button>-->
+                        <!--</form>-->
+                    <!--</div>-->
                 </div>
+
                 <div class="div-50 more-info">
+                    <h1 class="artist-name">{{vm.banda.name}}</h1>
+                    <h3><a class="artist-spotify-profile" target="_blank" ng-href="{{vm.banda.external_urls.spotify}}">Perfil de {{vm.banda.name}} en Spotify</a></h3>
+                    <p>Seguidores <span class="followers">{{vm.banda.followers.total}}</span></p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi dicta molestias necessitatibus ratione. Alias dolores dolorum eaque error eum ex explicabo fuga, modi nisi quod repellendus veritatis, voluptates? Aliquam aliquid, error exercitationem hic illo ipsum nisi possimus quaerat qui quia rerum soluta tempore, vero! Culpa laboriosam odio repellat tenetur totam?</p>
                 </div>
             </div>

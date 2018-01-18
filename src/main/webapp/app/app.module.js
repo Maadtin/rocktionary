@@ -7,6 +7,7 @@
             'tmh.dynamicLocale',
             'pascalprecht.translate',
             'ngResource',
+            'ngDialog',
             'ngCookies',
             'ngAria',
             'ngCacheBuster',

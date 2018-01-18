@@ -48,14 +48,25 @@ angular
     .module('rocktionaryApp')
     .service('BandaService', ['$resource', function ($resource) {
 
-        let url = 'https://api.spotify.com';
-
+        let base = 'https://api.spotify.com';
+        let token = window.spotifyToken;
         this.getBanda = function () {
-            return $resource(`${url}/v1/artists/:id `, {}, {
+            return $resource(`${base}/v1/artists/:id`, {}, {
                 'get': {
                     method: 'GET',
                     headers: {
-                        'Authorization': 'Bearer BQDiq05ixw4xbhW0AeVqtkT_fI23wTaFRCaJ-6U7zRN4qjkkaEWQLZKrrvlPMgZCX5LTpf551pX80REvfk0'
+                        'Authorization': token
+                    }
+                }
+            })
+        }
+
+        this.getTopTracks = function () {
+            return $resource(`${base}/v1/artists/:id/top-tracks?country=US`, {}, {
+                'get': {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': token
                     }
                 }
             })

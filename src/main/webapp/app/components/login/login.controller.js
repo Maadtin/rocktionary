@@ -5,10 +5,33 @@
         .module('rocktionaryApp')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', '$uibModalInstance'];
+    LoginController.$inject = ['$rootScope', '$state', '$timeout', 'Auth', '$uibModalInstance', '$http'];
 
-    function LoginController ($rootScope, $state, $timeout, Auth, $uibModalInstance) {
+    function LoginController ($rootScope, $state, $timeout, Auth, $uibModalInstance, $http) {
         var vm = this;
+
+        vm.spotifyLogin = function () {
+            function generateRandomString (length) {
+                let text = '';
+                let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                for (let i = 0; i < length; i++) {text += possible.charAt(Math.floor(Math.random() * possible.length));}
+                return text;
+            }
+
+            const client_id = 'acb078a8d60f4603bfbfb488651a6ca4'; // Your client id
+            const redirect_uri = 'http://localhost:8080/callback/';
+            const state = generateRandomString(16);
+            const scope = 'user-read-private user-read-email';
+
+            let url = 'https://accounts.spotify.com/authorize';
+            url += '?response_type=token';
+            url += '&client_id=' + encodeURIComponent(client_id);
+            url += '&scope=' + encodeURIComponent(scope);
+            url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
+            url += '&state=' + encodeURIComponent(state);
+            window.location = url;
+        };
+
 
         vm.authenticationError = false;
         vm.cancel = cancel;

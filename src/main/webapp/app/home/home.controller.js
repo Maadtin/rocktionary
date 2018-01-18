@@ -5,12 +5,11 @@
         .module('rocktionaryApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'HomeService'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'HomeService', '$http'];
 
-    function HomeController ($scope, Principal, LoginService, $state, HomeService) {
+    function HomeController ($scope, Principal, LoginService, $state, HomeService, $http) {
 
         var vm = this;
-
         vm.placeHolderText = 'albumes';
         vm.type = 'album'
         let timeOut = null;

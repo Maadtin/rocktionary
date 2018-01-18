@@ -204,7 +204,9 @@ function stateConfig ($stateProvider) {
             },
             views: {
                 'content@': {
-                    templateUrl: 'app/entities/banda/banda-detail.html'
+                    templateUrl: 'app/entities/banda/banda-detail.html',
+                    controller: 'BandaController',
+                    controllerAs: 'vm'
                 }
             },
             resolve: {
@@ -213,9 +215,12 @@ function stateConfig ($stateProvider) {
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }],
-                banda: ['$stateParams', 'BandaService', function ($stateParams, BandaService) {
-                    return BandaService.getBanda().get({id: $stateParams.id}).$promise
+                banda: ['$stateParams', 'BandaService', function($stateParams, BandaService) {
+                    return  BandaService.getBanda().get({id : $stateParams.id}).$promise
                 }],
+                topTracks: ['$stateParams', 'BandaService', function ($stateParams, BandaService) {
+                    return BandaService.getTopTracks().get({id: $stateParams.id}).$promise
+                }]
             }
         })
 }
