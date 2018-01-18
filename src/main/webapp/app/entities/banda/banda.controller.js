@@ -5,9 +5,9 @@
         .module('rocktionaryApp')
         .controller('BandaController', BandaController);
 
-    BandaController.$inject = ['DataUtils', 'banda', 'topTracks', '$sce', 'ngDialog'];
+    BandaController.$inject = ['DataUtils', 'banda', 'topTracks', '$sce'];
 
-    function BandaController(DataUtils, banda, topTracks, $sce, ngDialog) {
+    function BandaController(DataUtils, banda, topTracks, $sce) {
 
         let vm = this;
 
@@ -15,9 +15,6 @@
             return $sce.trustAsResourceUrl(url);
         }
 
-        vm.openLightBox = function () {
-            ngDialog.open({})
-        }
 
         vm.banda = banda;
         vm.topTracks = topTracks;

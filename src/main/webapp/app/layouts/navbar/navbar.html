@@ -155,6 +155,12 @@
                         </li>
                     </ul>
                 </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="equipo" ng-click="vm.collapseNavbar()">
+                        <span class="fa fa-users"></span>
+                        <span class="hidden-sm">Equipo</span>
+                    </a>
+                </li>
                 <li ng-class="{active: vm.$state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="admin-menu">
                         <span>
