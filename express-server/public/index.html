@@ -28,6 +28,7 @@
         <div id="oauth">
         </div>
         <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+        <button class="btn btn-danger" id="logout">logout</button>
     </div>
 </div>
 
@@ -97,6 +98,7 @@
         } else {
             if (access_token) {
                 // render oauth info
+                localStorage.setItem('token', access_token);
                 oauthPlaceholder.innerHTML = oauthTemplate({
                     access_token: access_token,
                     refresh_token: refresh_token
@@ -110,16 +112,9 @@
                         'Authorization': 'Bearer ' + access_token
                     },
                     success: function(response) {
-                        console.log(response)
-                    }
-                });
-                $.ajax({
-                    url: 'https://api.spotify.com/v1/me/following?type=artist',
-                    headers: {
-                        'Authorization': 'Bearer ' + access_token
-                    },
-                    success: function(response) {
-                        console.log(response)
+                        userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+                        $('#login').hide();
+                        $('#loggedin').show();
                     }
                 });
             } else {
@@ -136,6 +131,7 @@
                     }
                 }).done(function(data) {
                     access_token = data.access_token;
+                    localStorage.setItem('token', access_token);
                     oauthPlaceholder.innerHTML = oauthTemplate({
                         access_token: access_token,
                         refresh_token: refresh_token

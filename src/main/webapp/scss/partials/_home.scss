@@ -75,6 +75,7 @@
             border-radius: 2px;
             transition: all ease-out 0.2s;
             outline: none;
+            background-color: #000;
 
             @media (min-width: 600px) {
                 margin: 0 10px;
@@ -192,7 +193,6 @@
 
 /* HARDCOVER FRONT */
 .hardcover_front li:first-child {
-    background: url('libro-portada.jpg') center / cover no-repeat;
     backface-visibility: hidden;
 }
 
@@ -237,9 +237,9 @@
 
 /* page */
 
-.page > li {
-    background-color: #E9DCC0;
-}
+//.page > li {
+//    background-color: #E9DCC0;
+//}
 
 /*
 	3. opening cover, back cover and pages
@@ -306,7 +306,7 @@
     cursor: default;
     user-select: none;
     transform: translateZ(2px);
-    background: url('/content/images/libro-portada.jpg') center / cover no-repeat;
+    background: url('/content/images/ROCKTIONARY_portadanueva.png') center / cover no-repeat;
 }
 
 .hardcover_front li:last-child {
@@ -476,12 +476,12 @@
 
 .page > li:nth-child(2) {
     transition-duration: 0.6s;
-    background: url('/content/images/LIBROMETAL right.png') center / cover no-repeat
+    background: url('/content/images/right.png') center / cover no-repeat
 }
 
 .page > li:nth-child(3) {
     transition-duration: 0.4s;
-    background: url('/content/images/LIBROMETAL left invert.png') center / cover no-repeat
+    background: url('/content/images/left.png') center / cover no-repeat
 
 }
 

@@ -5,21 +5,25 @@
         .module('rocktionaryApp')
         .controller('CancionController', CancionController);
 
-    CancionController.$inject = ['Cancion'];
+    CancionController.$inject = ['cancion'];
 
-    function CancionController(Cancion) {
+    function CancionController(cancion) {
 
         var vm = this;
 
-        vm.cancions = [];
+        vm.cancion = cancion;
 
-        loadAll();
+        console.log(cancion)
 
-        function loadAll() {
-            Cancion.query(function(result) {
-                vm.cancions = result;
-                vm.searchQuery = null;
-            });
-        }
+        // vm.cancions = [];
+		  //
+        // loadAll();
+		  //
+        // function loadAll() {
+        //     Cancion.query(function(result) {
+        //         vm.cancions = result;
+        //         vm.searchQuery = null;
+        //     });
+        // }
     }
 })();

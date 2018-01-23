@@ -73,13 +73,13 @@
                                 <p>Seguidores: {{artist.followers.total}}</p>
                             </a>
 
-                            <a ui-sref="album-detail({id: album.id})" ng-if="vm.placeHolderText === 'albumes'" ng-repeat="album in vm.listaResultados.albums.items">
+                            <a ui-sref="album({id: album.id})" ng-if="vm.placeHolderText === 'albumes'" ng-repeat="album in vm.listaResultados.albums.items">
 
                                 <strong class="text-uppercase">{{album.name}}</strong>
                                 <img ng-if="album.images.length > 0" ng-src="{{album.images[1].url}}" alt="">
                             </a>
 
-                            <a ui-sref="cancion-detail({id: cancion.id})" ng-if="vm.placeHolderText === 'canciones'" ng-repeat="cancion in vm.listaResultados.tracks.items | orderBy: '-popularity'">
+                            <a ui-sref="cancion({id: cancion.id})" ng-if="vm.placeHolderText === 'canciones'" ng-repeat="cancion in vm.listaResultados.tracks.items | orderBy: '-popularity'">
                                 <strong class="text-uppercase">{{cancion.name}}</strong>
                                 <img ng-if="cancion.album.images.length > 0" ng-src="{{cancion.album.images[1].url}}" alt="Foto">
                                 <p>Duración {{vm.parseMillis(cancion.duration_ms)}}</p>

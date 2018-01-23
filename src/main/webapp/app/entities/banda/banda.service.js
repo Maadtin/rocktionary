@@ -59,7 +59,11 @@ angular
                     }
                 }
             })
-        }
+        };
+
+        this.getBandaInfo = function (inputSearch) {
+            return $resource(`http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&api_key=10ceb7a9cb40ae1b5c0b517bc625c8f5&artist=${inputSearch}&format=json`)
+        };
 
         this.getTopTracks = function () {
             return $resource(`${base}/v1/artists/:id/top-tracks?country=US`, {}, {
