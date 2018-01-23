@@ -1,109 +1,134 @@
-// moviles
 
-.carousel-inner{
-    border: 3px solid white;
+#myCarousel{
+    top: 15px;
+    border: 2px solid white;
 }
-
-.carousel-indicators{
-    bottom: 18px;
-}
-
-.main{
-    background-color: rgba(88, 77, 77, 0.15);
-    border-radius: 20px;
-    top:110px;
-}
-.main>div:nth-of-type(2),
-.main>div:nth-of-type(3),
-.main>div:nth-of-type(4){
-    top: 0;
-}
-
-.item h1{
-    font-size: 2rem;
-    text-align: center;
-    color: white;
-}
-
-.about-us{
-    text-align: center;
-}
-.about-us>strong{
+.about_us strong{
     font-size: 2.7rem;
-    padding: 0.5em;
+    padding: 1rem;
     background-color: rgba(95, 10, 10, 0.74);
     border-radius: 10px;
     color: #ad9696;
 }
-.about-info>div:first-child{
-    right: 7%;
-}
-
-.about-info>div:first-child>img{
-    height: 400px;
-    position: absolute;
-    top: 90px;
-    width: 155%;
-
-}
-
-.about-info>div:last-child>img{
-    left: 11%;
-    position: absolute;
-    top: 90px;
-    height: 380px;
-    width: 82%;
-}
-.about-info strong{
-    font-size: 2rem;
-    position: absolute;
-    top: 22px;
-    left: 20%;
-    color: #be878b;
-}
-
-
-.about-info{
-    min-height: 530px;
-    top: 20px;
-}
-
-.about-info>div:nth-of-type(2)>strong{
-    font-size: 28px;
-}
-.about-info>div:nth-of-type(3)>strong{
-    top: 60px;
-}
-
-.about-whoIam{
-    position: absolute;
-    background-color: gray;
-    left: 19%;
-    top: 90px;
-    height: 380px;
-}
-.about-whoIam p{
+.descripcion{
+    top: 45px;
+    border-radius: 1rem;
     font-size: 1.4rem;
+    background-color: rgba(88,77,77,0.15);
+    color:white;
+}
+.about_us_info{
+    top: 80px;
+    background-color: rgba(88,77,77,0.15);
+    border-radius: 1rem;
+    color:white;
+}
+.frase_preferida{
+    color:#3e3b3b;
+}
+
+.perfil_miembro1 img,
+.perfil_miembro2 img,
+.perfil_miembro3 img,
+.perfil_miembro4 img{
+    width:100%;
+}
+.text_miembro1,
+.text_miembro2,
+.text_miembro3,
+.text_miembro4{
+    font-size: 3rem;
+    font-family: @import url('https://fonts.googleapis.com/css?family=New+Rocker');
+}
+
+.skill_miembro1,
+.skill_miembro2,
+.skill_miembro3,
+.skill_miembro4{
+    background-color:#323232;
+}
+.skill_miembro1 img,
+.skill_miembro2  img,
+.skill_miembro3  img,
+.skill_miembro4  img{
+    width: 100%;
+}
+.miembro{
+    margin-top: 50px;
+}
+.info_miembro{
+    background-color: gray;
     color: black;
-    padding: 0.3rem;
-    margin-top: 15px;
+    padding: 2rem;
+}
+.info_miembro span{
+    display: block;
+    margin-bottom: 13px;
 }
 
-.about-des{
-    top: 30px;
-    color: white;
-    font-size: 2.2rem;
-    text-align: center;
-}
-
-@media screen and (max-width: 1200px){
-    .about-us>strong{
-        font-size: 2.5rem;
+@media screen and (min-width: 768px) {
+    .descripcion{
+        font-size: 1.9rem;
+    }
+    .info_miembro{
+        font-size: 1.8rem;
     }
 }
 
-@media screen and (max-width: 800px) {
-    .about-us>strong{
-        font-size: 2.0rem;
+@media screen and (min-width: 992px){
+    .descripcion{
+        font-size: 2.5rem;
+        text-align: center;
+    }
+    .perfil_miembro1,
+    .perfil_miembro2,
+    .perfil_miembro3,
+    .perfil_miembro4{
+        display: flex;
+        align-items: center;
+        height: 400px;
+    }
+    .perfil_miembro1 img,
+    .perfil_miembro2 img,
+    .perfil_miembro3 img,
+    .perfil_miembro4 img{
+        height: 298px;
+    }
+    .info_miembro{
+        height: 368px;
+        font-size: 1.2rem;
+        padding: 1.5rem;
+    }
+    }
+    .skill_miembro1,
+    .skill_miembro2,
+    .skill_miembro3,
+    .skill_miembro4{
+        background-color: #323232;
+    }
+
+@media screen and (min-width: 1200px){
+    .info_miembro{
+        height: 449.5px;
+        font-size: 1.5rem;
+        padding: 1.5rem;
+    }
+    .about_us_info{
+        height: 2300px;
+    }
+
+    .perfil_miembro1 img,
+    .perfil_miembro2 img,
+    .perfil_miembro3 img,
+    .perfil_miembro4 img{
+        height: 360px;
+    }
+    .perfil_miembro1,
+    .perfil_miembro2,
+    .perfil_miembro3,
+    .perfil_miembro4{
+        display: flex;
+        align-items: center;
+        height: 400px;
     }
 }
