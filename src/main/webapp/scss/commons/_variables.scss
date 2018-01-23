@@ -3,9 +3,12 @@ $main-bg: url(/content/images/bg-main.jpg) center / cover no-repeat fixed;
 
 // Color palette
 $primary: #000;
-$secondary: rgba(#900c3f, 0.8);
+$secondary: rgba(#D3B173, 0.8);
+$secondary-darken: darken($secondary, 20);
+$secondary-transparent: rgba($secondary, 0.5);
 
-// General
+
+    // General
 
 $thin-border: thin solid rgba(#fff, 0.4);
 $white-border: thin solid #fff;

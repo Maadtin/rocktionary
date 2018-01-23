@@ -5,24 +5,23 @@
         .module('rocktionaryApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'HomeService', '$http'];
+    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'HomeService', 'AppUtils'];
 
-    function HomeController ($scope, Principal, LoginService, $state, HomeService, $http) {
+    function HomeController ($scope, Principal, LoginService, $state, HomeService, AppUtils) {
 
         var vm = this;
         vm.placeHolderText = 'albumes';
-        vm.type = 'album'
+        vm.type = 'album';
         let timeOut = null;
-
-
-        // HomeService.getToken().then(res => console.log(res))
-
 
         function buscaCancionPorNombre (nombre) {
             vm.inputSearch = nombre;
             vm.handleOnInputChange();
             $scope.$apply()
         }
+
+
+
 
         function cambiaCategoria (cat) {
             switch (cat) {
@@ -36,6 +35,13 @@
             vm.inputSearch = '';
             vm.showResults = false;
             $scope.$apply()
+        }
+
+        vm.toBandas = function (id) {
+            $state.go('banda',{
+                id,
+                inputSearch: vm.inputSearch
+            })
         }
 
         function adios () {
@@ -112,11 +118,7 @@
             }
         }
 
-        vm.parseMillis = function(millis) {
-            var minutes = Math.floor(millis / 60000);
-            var seconds = ((millis % 60000) / 1000).toFixed(0);
-            return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-        }
+        vm.parseMillis = AppUtils.parseMillis;
 
         let onError = err => {
             if (vm.inputSearch !== undefined) {

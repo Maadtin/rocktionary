@@ -1,5 +1,38 @@
 .album-detail {
 
+
+    .album-canciones {
+
+        h5, span {
+            width: 50%;
+            display: block;
+        }
+
+        span {
+            text-align: right;
+        }
+
+        ul {
+
+            li {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+        }
+
+        .album-cancion-container {
+            width: 100%;
+            audio {
+                width: 100%;
+            }
+
+        }
+
+    }
+
     .container-mid {
         position: relative;
         height: 100%;
@@ -115,6 +148,21 @@
             }
         }
 
+
+        .album-canciones-total{
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .album-spotify-profile {
+            color: #fff;
+        }
+
+        .album-name {
+            margin-top: 0;
+        }
+
         .div-50 {
             @media (min-width: 1000px) {
                 width: 49%;
@@ -197,4 +245,5 @@
         }
     }
 }
+
 

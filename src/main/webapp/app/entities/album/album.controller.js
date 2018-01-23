@@ -5,21 +5,29 @@
         .module('rocktionaryApp')
         .controller('AlbumController', AlbumController);
 
-    AlbumController.$inject = ['Album'];
+    AlbumController.$inject = ['album', 'albumTracks', 'AppUtils'];
 
-    function AlbumController(Album) {
+    function AlbumController(album, albumTracks, AppUtils) {
 
         var vm = this;
 
-        vm.albums = [];
 
-        loadAll();
+        vm.album = album;
+        vm.albumTracks = albumTracks;
+        vm.parseMillis = AppUtils.parseMillis;
+        vm.validateUrl = AppUtils.validateUrl;
+        console.log(album);
+        console.log(albumTracks)
 
-        function loadAll() {
-            Album.query(function(result) {
-                vm.albums = result;
-                vm.searchQuery = null;
-            });
-        }
+        // vm.albums = [];
+		  //
+        // loadAll();
+		  //
+        // function loadAll() {
+        //     Album.query(function(result) {
+        //         vm.albums = result;
+        //         vm.searchQuery = null;
+        //     });
+        // }
     }
 })();

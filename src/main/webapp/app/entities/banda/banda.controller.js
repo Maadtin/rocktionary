@@ -5,21 +5,23 @@
         .module('rocktionaryApp')
         .controller('BandaController', BandaController);
 
-    BandaController.$inject = ['DataUtils', 'banda', 'topTracks', '$sce'];
+    BandaController.$inject = ['DataUtils', 'banda', 'topTracks', 'BandaService', 'AppUtils'];
 
-    function BandaController(DataUtils, banda, topTracks, $sce) {
+    function BandaController(DataUtils, banda, topTracks, BandaService, AppUtils) {
 
         let vm = this;
 
-        vm.validateURL = function (url) {
-            return $sce.trustAsResourceUrl(url);
-        }
+
+        vm.validateURL = AppUtils.validateUrl;
 
 
         vm.banda = banda;
         vm.topTracks = topTracks;
-        console.log(topTracks)
-        //
+        console.log(banda);
+        if (vm.banda) {
+           BandaService.getBandaInfo(vm.banda.name).get()
+               .$promise.then(res => vm.bandaBio = res.artist.bio.content)
+        }
         // vm.bandas = [];
         // vm.openFile = DataUtils.openFile;
         // vm.byteSize = DataUtils.byteSize;
