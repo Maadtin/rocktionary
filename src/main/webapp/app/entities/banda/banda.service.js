@@ -74,7 +74,9 @@ angular
                     }
                 }
             })
+        };
+
+        this.getBandaVideoTrack = function (trackName) {
+            return $resource(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${trackName}&maxResults=1&key=AIzaSyBh4jKVZPAs4VFdpr2RAdPa_3bHFVRjQXQ&type=video`)
         }
-
-
     }]);

@@ -22,6 +22,22 @@
            BandaService.getBandaInfo(vm.banda.name).get()
                .$promise.then(res => vm.bandaBio = res.artist.bio.content)
         }
+
+        vm.toggleIcon = function ($e) {
+            angular.element($e.target).toggleClass('fa-pause');
+            angular.element('.track-icon-play').not($e.target).removeClass('fa-pause').addClass('fa-play')
+
+            BandaService.getBandaVideoTrack($e.target.dataset.trackName).get()
+                .$promise
+                .then(res => {
+                    const { videoId } = res.items[0].id;
+                    angular.element('#videoPlayer').html('').html(
+                        `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}?rel=0&autoplay=1" frameborder="0"    allowfullscreen></iframe>`
+                    ).css('display', 'block');
+                })
+        }
+
+
         // vm.bandas = [];
         // vm.openFile = DataUtils.openFile;
         // vm.byteSize = DataUtils.byteSize;

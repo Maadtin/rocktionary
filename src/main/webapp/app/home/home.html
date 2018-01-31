@@ -26,14 +26,14 @@
                 </ul>
             </figure>
         </div>
-        <form class="col-xs-10 col-xs-offset-1">
+        <form class="col-xs-10 col-xs-offset-1 px-0">
             <p class="home__cta subtitle">Buscar</p>
             <div class="col-xs-12 col-sm-6 col-sm-offset-3 home__labels">
                 <span id="canciones" ng-click="vm.handleClassChange('canciones', $event); vm.handleOnInputChange()">Canciones</span>
                 <span id="albumes" ng-click="vm.handleClassChange('albumes', $event); vm.handleOnInputChange()" class="active">Albumes</span>
                 <span id="bandas" ng-click="vm.handleClassChange('bandas', $event); vm.handleOnInputChange()">Bandas</span>
             </div>
-
+            <p>{{vm.showResults}}</p>
             <div class="px-0 form-group col-xs-12 col-sm-6 col-sm-offset-3 home__search-container">
                 <input autocomplete="off"
                        ng-keyup="vm.onEnterKey($event)"
@@ -46,14 +46,14 @@
                        class="form-control home__input-search">
                 <i class="fa {{vm.isListening ? 'fa-microphone isListening' : 'fa-microphone-slash'}}" ng-click="vm.triggerMic()" aria-hidden="true"></i>
             </div>
-            <div class="px-0 form-group col-xs-12 col-sm-6 col-sm-offset-3">
+            <div ng-class="{'is-visible': vm.showResults}" class="px-0 form-group col-xs-12 col-sm-6 col-sm-offset-3 results">
                 <div ng-class="{'is-visible': vm.showResults}" class="home__search-results">
                     <div ng-if="vm.isLoading" class="home__loader ball-clip-rotate">
                         <div></div>
                     </div>
                     <div ng-if="!vm.isLoading">
                         <p class="notFoundMsg" ng-if="vm.notFound">{{vm.notFoundMsg}}</p>
-                        <div class="home__card-container" ng-if="!vm.notFound">
+                        <div class="home__card-container" ng-show="!vm.notFound">
 
                             <div ng-switch="vm.type">
                                 <p class="home__result-text" ng-switch-when="track">{{vm.listaResultados.tracks.items.length > 0
@@ -79,12 +79,28 @@
                                 <img ng-if="album.images.length > 0" ng-src="{{album.images[1].url}}" alt="">
                             </a>
 
-                            <a ui-sref="cancion({id: cancion.id})" ng-if="vm.placeHolderText === 'canciones'" ng-repeat="cancion in vm.listaResultados.tracks.items | orderBy: '-popularity'">
-                                <strong class="text-uppercase">{{cancion.name}}</strong>
-                                <img ng-if="cancion.album.images.length > 0" ng-src="{{cancion.album.images[1].url}}" alt="Foto">
-                                <p>Duración {{vm.parseMillis(cancion.duration_ms)}}</p>
-                                <p>{{cancion.id}}</p>
-                            </a>
+                            <div ui-sref="cancion({id: cancion.id})" ng-if="vm.placeHolderText === 'canciones'" ng-repeat="cancion in vm.listaResultados.tracks.items | orderBy: '-popularity'">
+                                <section class="busqueda-cancion-container">
+                                    <img class="cancion-img"
+                                         ng-if="cancion.album.images.length > 0"
+                                         ng-src="{{cancion.album.images[1].url}}"
+                                         alt="Foto">
+                                    <div class="cancion-artistas">
+                                        <p class="text-uppercase busqueda-track-name">{{cancion.name}}</p>
+                                        <div class="busqueda-artistas-name">
+                                            <p ng-repeat="artista in cancion.artists">{{artista.name}}</p>
+                                        </div>
+                                    </div>
+                                </section>
+                                <audio class="home-audio" controls>
+                                    <source ng-src="{{vm.validateUrl(cancion.preview_url)}}">
+                                </audio>
+                                <!--<strong class="text-uppercase">{{cancion.name}}</strong>-->
+                                <!--<img ng-if="cancion.album.images.length > 0" ng-src="{{cancion.album.images[1].url}}" alt="Foto">-->
+                                <!--<p>Duración {{vm.parseMillis(cancion.duration_ms)}}</p>-->
+                                <!--<p>Preview de la canción</p>-->
+
+                            </div>
                         </div>
                     </div>
                 </div>

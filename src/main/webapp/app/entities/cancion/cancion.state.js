@@ -173,7 +173,11 @@
 
 angular
     .module('rocktionaryApp')
-    .config(['$stateProvider', function ($stateProvider) {
+    .config(stateConfig);
+
+stateConfig.$inject = ['$stateProvider'];
+
+function stateConfig ($stateProvider) {
         return $stateProvider
             .state('cancion', {
                 parent: 'entity',
@@ -200,6 +204,7 @@ angular
                     }]
                 }
             })
-    }]);
+
+}
 
 

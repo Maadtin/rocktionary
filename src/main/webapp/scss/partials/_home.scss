@@ -139,18 +139,67 @@
         padding: .5em;
     }
 
+    .results {
+        background-color: #2a2a2a;
+        display: none;
+        transition: all ease 0.2s;
+        &.is-visible {
+           display: block;
+        }
+    }
+
     &__search-results {
         background-color: #2a2a2a;
         color: #fff;
-        padding: 1em;
         text-align: center;
-        visibility: hidden;
         opacity: 0;
+        display: none;
         transition: all ease 0.2s;
         &.is-visible {
             opacity: 1;
-            visibility: visible;
+            display: block;
         }
+    }
+
+    .busqueda-cancion-container {
+        display: flex;
+
+        img {
+            width: 100px;
+            height: 100px !important;
+        }
+
+        .cancion-artistas {
+            padding: .5em;
+            display: flex;
+            flex-wrap: wrap;
+            .busqueda-track-name {
+                text-align: left;
+                font-weight: bold;
+                width: 100%;
+            }
+            .busqueda-artistas-name {
+                width: 100%;
+                margin-top: auto;
+
+                p {
+                    text-align: left;
+                    font-size: 13px;
+                    margin: 0;
+
+                }
+            }
+
+
+        }
+
+
+
+
+    }
+
+    .home-audio {
+        width: 100%;
     }
 
 

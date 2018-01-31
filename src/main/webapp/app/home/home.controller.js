@@ -10,6 +10,12 @@
     function HomeController ($scope, Principal, LoginService, $state, HomeService, AppUtils) {
 
         var vm = this;
+
+        vm.parseMillis = AppUtils.parseMillis;
+        vm.validateUrl = AppUtils.validateUrl;
+        vm.showResults = false;
+
+
         vm.placeHolderText = 'albumes';
         vm.type = 'album';
         let timeOut = null;
@@ -118,8 +124,6 @@
             }
         }
 
-        vm.parseMillis = AppUtils.parseMillis;
-
         let onError = err => {
             if (vm.inputSearch !== undefined) {
                 vm.showResults = !!vm.inputSearch;
@@ -140,12 +144,9 @@
 
         vm.handleOnInputChange = function () {
             vm.showResults = !!vm.inputSearch;
-            !vm.showResults && angular.element('.home__card-container').empty()
+            !vm.showResults && console.log(document.querySelector('.home__card-container'));
             vm.showResults ? angular.element('#book').addClass('open') : angular.element('#book').removeClass('open')
             if (vm.inputSearch) {
-
-
-
                 let endPoint = `https://api.spotify.com/v1/search?q=${encodeURIComponent(vm.inputSearch)}&type=${vm.type}`;
                 vm.isLoading = true;
                 clearTimeout(timeOut);
