@@ -12,6 +12,10 @@ import com.rocktionary.app.web.rest.errors.*;
 import com.rocktionary.app.web.rest.vm.KeyAndPasswordVM;
 import com.rocktionary.app.web.rest.vm.ManagedUserVM;
 
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -186,4 +191,49 @@ public class AccountResource {
             password.length() >= ManagedUserVM.PASSWORD_MIN_LENGTH &&
             password.length() <= ManagedUserVM.PASSWORD_MAX_LENGTH;
     }
+
+    private String generateRandomString (int length) {
+        StringBuilder text = new StringBuilder();
+        String possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (int i = 0; i < length; i++) {
+            text.append(possible.charAt((int) Math.floor(Math.random() * possible.length())));
+        }
+        return text.toString();
+    }
+
+
+    @GetMapping("/account/login-spotify")
+    public String testSpotify () throws IOException {
+        OkHttpClient client = new OkHttpClient();
+
+        String state = generateRandomString(16);
+
+
+        HttpUrl httpUrl = new HttpUrl.Builder()
+            .scheme("http")
+            .host("localhost")
+            .port(8080)
+            .addPathSegment("authorize")
+            .addQueryParameter("response_type", "code")
+            .addQueryParameter("client_id", "acb078a8d60f4603bfbfb488651a6ca4")
+            .addQueryParameter("redirect_uri", "http://localhost:8888/callback/")
+            .addQueryParameter("scope", "user-read-private user-read-email user-follow-read")
+            .addQueryParameter("state", state)
+            .addQueryParameter("show_dialog", "true")
+            .build();
+
+        Request request = new Request.Builder()
+            .header("accept", "text/html")
+            .url(httpUrl)
+            .build();
+
+        Response response = client.newCall(request).execute();
+
+        return response.body().string();
+
+    }
+
+
 }
+
