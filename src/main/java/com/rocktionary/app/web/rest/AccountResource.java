@@ -21,6 +21,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -204,33 +206,17 @@ public class AccountResource {
 
 
     @GetMapping("/account/login-spotify")
-    public String testSpotify () throws IOException {
-        OkHttpClient client = new OkHttpClient();
+    public RedirectView testSpotify (RedirectAttributes attrs) throws IOException {
+
 
         String state = generateRandomString(16);
-
-
-        HttpUrl httpUrl = new HttpUrl.Builder()
-            .scheme("http")
-            .host("localhost")
-            .port(8080)
-            .addPathSegment("authorize")
-            .addQueryParameter("response_type", "code")
-            .addQueryParameter("client_id", "acb078a8d60f4603bfbfb488651a6ca4")
-            .addQueryParameter("redirect_uri", "http://localhost:8888/callback/")
-            .addQueryParameter("scope", "user-read-private user-read-email user-follow-read")
-            .addQueryParameter("state", state)
-            .addQueryParameter("show_dialog", "true")
-            .build();
-
-        Request request = new Request.Builder()
-            .header("accept", "text/html")
-            .url(httpUrl)
-            .build();
-
-        Response response = client.newCall(request).execute();
-
-        return response.body().string();
+        attrs.addAttribute("response_type", "code");
+        attrs.addAttribute("client_id", "acb078a8d60f4603bfbfb488651a6ca4");
+        attrs.addAttribute("scope", "user-read-private user-read-email user-follow-read");
+        attrs.addAttribute("redirect_uri", "http://localhost:8080/callback/");
+        attrs.addAttribute("state", state);
+        attrs.addAttribute("show_dialog", "true");
+        return new RedirectView("https://accounts.spotify.com/authorize");
 
     }
 
