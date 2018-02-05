@@ -7,7 +7,7 @@
 //     Album.$inject = ['$resource'];
 //
 //     function Album ($resource) {
-//         var resourceUrl =  'api/albums/:id';
+//         var resourceUrl =  'api/albums/:id';<<
 //
 //         return $resource(resourceUrl, {}, {
 //             'query': { method: 'GET', isArray: true},

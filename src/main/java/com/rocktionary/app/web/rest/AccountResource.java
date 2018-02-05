@@ -12,10 +12,10 @@ import com.rocktionary.app.web.rest.errors.*;
 import com.rocktionary.app.web.rest.vm.KeyAndPasswordVM;
 import com.rocktionary.app.web.rest.vm.ManagedUserVM;
 
-import okhttp3.HttpUrl;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+//import okhttp3.HttpUrl;
+//import okhttp3.OkHttpClient;
+//import okhttp3.Request;
+//import okhttp3.Response;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
